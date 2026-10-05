@@ -12,7 +12,7 @@ export function ExperienceMotion() {
         mm.add("(min-width: 768px)", () => {
           const starts = [{ x: -60 }, { y: -45 }, { y: 55 }, { x: 55 }];
           document.querySelectorAll<HTMLElement>(".rc-exp").forEach((node, index) => {
-            gsap.from(node, { ...starts[index], opacity: 0, scale: 0.96, duration: 1.05, delay: index * 0.09, ease: "power3.out", scrollTrigger: { trigger: ".rc-experience-composition", start: "top 78%" } });
+            gsap.from(node, { ...starts[index], opacity: 0, scale: 0.96, duration: 1.05, delay: index * 0.09, ease: "power3.out", scrollTrigger: { trigger: ".rc-experiences", start: "top 55%" } });
           });
         });
         mm.add("(max-width: 767px)", () => {
