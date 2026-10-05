@@ -1431,9 +1431,9 @@ img {
   border-top: 1px solid var(--laterite);
   font: 400 17px/1.4 var(--font-display);
 }
-.rc-experience-composition { position: relative; z-index: 1; min-height: 710px; margin-top: -155px; }
+.rc-experience-composition { position: relative; z-index: 1; min-height: clamp(650px, 49vw, 790px); margin-top: clamp(-155px, -10vw, -112px); }
 .rc-exp { position: absolute; }
-.rc-exp a { display: block; }
+.rc-exp a { display: flex; flex-direction: column; width: 100%; }
 .rc-exp-image { overflow: hidden; }
 .rc-exp-image img { height: 100%; transition: transform 0.75s cubic-bezier(.2,.75,.2,1); }
 .rc-exp:hover .rc-exp-image img { transform: scale(1.035); }
@@ -1456,22 +1456,24 @@ img {
 }
 .rc-exp-arrow svg { width: 18px; transition: transform 0.3s; }
 .rc-exp:hover .rc-exp-arrow svg { transform: translateX(4px); }
-.rc-exp-1 { left: 0; bottom: 0; width: 39%; }
+.rc-exp-1 { left: 0; bottom: 0; width: clamp(390px, 39%, 720px); }
 .rc-exp-1 .rc-exp-image { aspect-ratio: 1.48/1; border-radius: 0 34% 0 18%; }
-.rc-exp-2 { top: 0; left: 49%; width: 35%; }
+.rc-exp-2 { top: 0; right: 3%; width: clamp(350px, 35%, 620px); }
 .rc-exp-2 .rc-exp-image { aspect-ratio: 1.42/1; border-radius: 30% 0 18% 0; }
-.rc-exp-2 .rc-exp-copy { position: absolute; left: 106%; top: 42px; width: 210px; }
-.rc-exp-3 { left: 43%; bottom: 0; width: 29%; }
+.rc-exp-2 .rc-exp-copy { width: 100%; max-width: 300px; margin-top: 1px; }
+.rc-exp-3 { left: 42%; bottom: 0; width: clamp(300px, 28%, 500px); }
 .rc-exp-3 .rc-exp-image { aspect-ratio: 1.38/1; border-radius: 22% 0 28% 0; }
-.rc-exp-4 { right: 0; bottom: 0; width: 25%; }
+.rc-exp-4 { right: 0; bottom: 0; width: clamp(260px, 24%, 430px); }
 .rc-exp-4 .rc-exp-image { aspect-ratio: 1.05/1; border-radius: 35% 0 0 28%; }
 
-.rc-destinations { position: relative; height: 240svh; background: var(--camp-charcoal); color: oklch(0.97 0.015 86); }
+.rc-destinations { position: relative; background: var(--camp-charcoal); color: oklch(0.97 0.015 86); }
+.rc-destination-desktop { display: block; height: 240svh; }
+.rc-destination-mobile { display: none; }
 .rc-destination-stage { position: relative; height: 100svh; overflow: hidden; }
 .rc-place { position: absolute; inset: 0; overflow: hidden; }
 .rc-place img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .rc-place-coast { right: 30%; }
-.rc-place-hills { clip-path: polygon(70% 0, 100% 0, 100% 100%, 62% 100%, 68% 78%, 60% 61%, 71% 43%, 64% 24%); will-change: clip-path; }
+.rc-place-hills { clip-path: polygon(68% 0, 100% 0, 100% 100%, 68% 100%, 63% 80%, 69% 62%, 63% 45%, 70% 25%); will-change: clip-path; }
 .rc-place-shade { position: absolute; inset: 0; background: linear-gradient(0deg, oklch(0.05 0.01 145 / 0.68), transparent 60%); }
 .rc-place-copy { position: absolute; z-index: 3; bottom: clamp(54px, 8vh, 88px); }
 .rc-coast-copy { left: clamp(26px, 6vw, 88px); }
@@ -1496,6 +1498,15 @@ img {
 .rc-map-label-coast { left: 61%; top: 9%; }
 .rc-map-label-hills { left: 33%; bottom: 8%; opacity: 0; }
 
+.rc-mobile-destination { position: relative; min-height: 82svh; overflow: hidden; }
+.rc-mobile-destination img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.rc-mobile-destination.ramachandi img { object-position: 42% center; }
+.rc-mobile-destination.koraput img { object-position: 55% center; }
+.rc-mobile-destination-shade { position: absolute; inset: 0; background: linear-gradient(0deg, oklch(0.05 0.01 145 / 0.78), oklch(0.05 0.01 145 / 0.06) 68%); }
+.rc-mobile-destination-copy { position: absolute; z-index: 2; left: clamp(20px, 5vw, 52px); right: clamp(20px, 5vw, 52px); bottom: clamp(32px, 6vh, 64px); }
+.rc-mobile-destination-copy h2 { font: 400 clamp(58px, 12vw, 96px)/0.82 var(--font-display); text-transform: uppercase; }
+.rc-mobile-destination-copy > p:not(.eyebrow) { margin: 14px 0 22px; font-size: clamp(14px, 2.2vw, 18px); }
+
 @media (min-width: 1100px) {
   .site-header { border-bottom: 0; padding-top: 20px; }
   .brand-mark { flex-direction: row; gap: 5px; font-size: 16px; line-height: 1; letter-spacing: 0.15em; }
@@ -1505,21 +1516,16 @@ img {
 }
 @media (max-width: 1099px) {
   .rc-hero h1 { font-size: clamp(74px, 11vw, 108px); }
-  .rc-experiences { min-height: 1250px; }
-  .rc-experience-composition { margin-top: 30px; min-height: 940px; }
+  .rc-experiences { min-height: 0; }
+  .rc-experience-composition { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(44px, 6vw, 72px) clamp(28px, 5vw, 56px); min-height: 0; margin-top: 52px; }
   .rc-experience-heading { width: 75%; }
-  .rc-exp-1 { width: 48%; }
-  .rc-exp-2 { width: 45%; left: auto; right: 0; }
-  .rc-exp-2 .rc-exp-copy { position: relative; left: auto; top: auto; width: auto; }
-  .rc-exp-3 { width: 43%; left: 8%; bottom: 0; }
-  .rc-exp-4 { width: 42%; bottom: 40px; }
-  .rc-destinations { height: auto; }
-  .rc-destination-stage { height: auto; overflow: visible; }
-  .rc-place { position: relative; inset: auto; min-height: 86svh; }
-  .rc-place-coast { right: auto; }
-  .rc-place-hills { clip-path: none; }
-  .rc-hills-copy { opacity: 1; }
-  .rc-terrain-edge, .rc-journey-line, .rc-map-label { display: none; }
+  .rc-exp, .rc-exp-1, .rc-exp-2, .rc-exp-3, .rc-exp-4 { position: relative; inset: auto; width: 100%; }
+  .rc-exp-2 .rc-exp-copy { width: 100%; max-width: 330px; }
+  .rc-exp-1 .rc-exp-image, .rc-exp-2 .rc-exp-image, .rc-exp-3 .rc-exp-image, .rc-exp-4 .rc-exp-image { aspect-ratio: 1.3/1; }
+  .rc-destination-desktop { display: none !important; }
+  .rc-destination-mobile { display: block; }
+  .rc-destinations { height: auto !important; }
+  .rc-terrain-edge, .rc-journey-line, .rc-map-label { display: none !important; }
 }
 @media (max-width: 767px) {
   .rc-hero-media { object-position: 62% center; }
@@ -1539,10 +1545,8 @@ img {
   .rc-exp-1 .rc-exp-image, .rc-exp-2 .rc-exp-image, .rc-exp-3 .rc-exp-image, .rc-exp-4 .rc-exp-image { aspect-ratio: 1.25/1; }
   .rc-exp-copy { padding-right: 48px; }
   .rc-exp-copy h3 { font-size: 31px; }
-  .rc-place { min-height: 86svh; }
-  .rc-place img { object-position: center; }
-  .rc-place-copy { left: 20px; right: 20px; bottom: 38px; text-align: left; }
-  .rc-place-copy h2 { font-size: clamp(62px, 19vw, 84px); }
-  .rc-place-copy > p:not(.eyebrow) { font-size: 14px; letter-spacing: 0; }
+  .rc-mobile-destination { min-height: 82svh; }
+  .rc-mobile-destination-copy { left: 20px; right: 20px; bottom: 32px; }
+  .rc-mobile-destination-copy h2 { font-size: clamp(58px, 18vw, 80px); }
   .rc-cream-button { min-height: 48px; padding-inline: 24px; }
 }
