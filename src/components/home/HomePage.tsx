@@ -3,11 +3,13 @@ import { ArrowDown, ArrowUpRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BookingForm } from "@/components/booking/BookingForm";
 import { Reveal } from "@/components/motion/Reveal";
+import { HomeMotion } from "@/components/motion/HomeMotion";
 import { destinations, experiences, koraputStops, media } from "@/data/site";
 
 export function HomePage() {
   return (
     <main>
+      <HomeMotion />
       <section className="home-hero" aria-labelledby="home-title">
         <img
           className="hero-media"

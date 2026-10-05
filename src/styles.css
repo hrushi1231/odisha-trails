@@ -471,7 +471,8 @@ img {
 .route-path {
   stroke: var(--laterite);
   stroke-width: 3;
-  stroke-dasharray: 8 7;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
 }
 .topo-path {
   stroke: var(--hill-moss);
@@ -994,7 +995,6 @@ img {
   }
   .route-path {
     stroke-dasharray: 1200;
-    stroke-dashoffset: 0;
   }
 }
 @media (max-width: 1099px) {

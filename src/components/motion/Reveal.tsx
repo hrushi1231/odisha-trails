@@ -7,7 +7,9 @@ export function Reveal({ children, className }: { children: ReactNode; className
     const node = ref.current;
     if (!node || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
     let cleanup = () => {};
-    void import("gsap").then(({ gsap }) => {
+    void Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
+      ([{ gsap }, { ScrollTrigger }]) => {
+        gsap.registerPlugin(ScrollTrigger);
       const ctx = gsap.context(
         () =>
           gsap.fromTo(
@@ -24,7 +26,8 @@ export function Reveal({ children, className }: { children: ReactNode; className
         node,
       );
       cleanup = () => ctx.revert();
-    });
+      },
+    );
     return () => cleanup();
   }, []);
   return (
