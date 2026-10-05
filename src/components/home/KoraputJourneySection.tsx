@@ -3,11 +3,13 @@ import { ArrowRight, Compass } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { koraputJourneyStops, media } from "@/data/site";
 import { KoraputJourneyMotion } from "@/components/motion/KoraputJourneyMotion";
+import { useRef } from "react";
 
 export function KoraputJourneySection() {
+  const rootRef = useRef<HTMLElement>(null);
   return (
-    <section className="rc-koraput-journey" aria-labelledby="koraput-journey-title">
-      <KoraputJourneyMotion />
+    <section ref={rootRef} className="rc-koraput-journey" aria-labelledby="koraput-journey-title">
+      <KoraputJourneyMotion rootRef={rootRef} />
       <div className="rc-journey-topography" aria-hidden />
       <header className="rc-journey-intro">
         <p className="eyebrow rc-journey-reveal">05 · Journeys, not just stays</p>
