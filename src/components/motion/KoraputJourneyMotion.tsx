@@ -18,7 +18,7 @@ export function KoraputJourneyMotion({ rootRef }: { rootRef: RefObject<HTMLEleme
             duration: 0.85,
             stagger: 0.08,
             ease: "power3.out",
-            scrollTrigger: { trigger: ".rc-koraput-journey", start: "top 78%" },
+            scrollTrigger: { trigger: root, start: "top 78%" },
           });
           const mm = gsap.matchMedia();
           mm.add("(min-width: 768px)", () => {
@@ -42,7 +42,7 @@ export function KoraputJourneyMotion({ rootRef }: { rootRef: RefObject<HTMLEleme
           gsap.fromTo(
             ".rc-journey-landscape img",
             { scale: 1.03 },
-            { scale: 1, duration: 1.4, ease: "power2.out", scrollTrigger: { trigger: ".rc-koraput-journey", start: "top 75%" } },
+            { scale: 1, duration: 1.4, ease: "power2.out", scrollTrigger: { trigger: root, start: "top 75%" } },
           );
           cleanup = () => { mm.revert(); ctx.revert(); };
         }, root);

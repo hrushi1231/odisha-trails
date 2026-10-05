@@ -18,7 +18,7 @@ export function RealRuralCampsMotion({ rootRef }: { rootRef: RefObject<HTMLEleme
             duration: 0.8,
             stagger: 0.09,
             ease: "power3.out",
-            scrollTrigger: { trigger: ".rc-real-camps", start: "top 76%" },
+            scrollTrigger: { trigger: root, start: "top 76%" },
           });
           gsap.from(".rc-moment", {
             y: 28,
