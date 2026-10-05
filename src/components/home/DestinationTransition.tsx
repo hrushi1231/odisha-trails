@@ -3,11 +3,13 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { media } from "@/data/site";
 import { DestinationMotion } from "@/components/motion/DestinationMotion";
+import { useRef } from "react";
 
 export function DestinationTransition() {
+  const rootRef = useRef<HTMLElement>(null);
   return (
-    <section className="rc-destinations" aria-label="Ramachandi and Koraput">
-      <DestinationMotion />
+    <section ref={rootRef} className="rc-destinations" aria-label="Ramachandi and Koraput">
+      <DestinationMotion rootRef={rootRef} />
       <div className="rc-destination-desktop">
         <div className="rc-destination-stage">
           <article className="rc-place rc-place-coast">
