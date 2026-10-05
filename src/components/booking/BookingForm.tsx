@@ -1,5 +1,5 @@
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -20,9 +20,13 @@ const destinationOptions: Record<string, string[]> = {
 export function BookingForm({
   compact = false,
   defaultExperience,
+  defaultDestination = "",
+  className,
 }: {
   compact?: boolean;
   defaultExperience?: BookingValues["experience"];
+  defaultDestination?: string;
+  className?: string;
 }) {
   const {
     register,
@@ -34,7 +38,7 @@ export function BookingForm({
     resolver: zodResolver(bookingSchema),
     defaultValues: {
       ...(defaultExperience ? { experience: defaultExperience } : {}),
-      destination: "",
+      destination: defaultDestination,
       date: "",
       guests: 2,
       name: "",
@@ -45,7 +49,13 @@ export function BookingForm({
   });
   const experience = useWatch({ control, name: "experience" });
   const options = useMemo(() => destinationOptions[experience ?? ""] ?? [], [experience]);
-  useEffect(() => setValue("destination", ""), [experience, setValue]);
+  const previousExperience = useRef(experience);
+  useEffect(() => {
+    if (previousExperience.current !== experience) {
+      setValue("destination", "");
+      previousExperience.current = experience;
+    }
+  }, [experience, setValue]);
   const configured = Boolean(
     (import.meta.env["VITE_RURAL_CAMPS_WHATSAPP"] as string | undefined)?.replace(/\D/g, ""),
   );
@@ -66,7 +76,7 @@ export function BookingForm({
     ) : null;
   return (
     <form
-      className={cn("booking-form", compact && "booking-form-compact")}
+      className={cn("booking-form", compact && "booking-form-compact", className)}
       onFocus={() => window.dispatchEvent(new CustomEvent("booking_form_started"))}
       onSubmit={handleSubmit(onSubmit)}
       noValidate
@@ -107,7 +117,7 @@ export function BookingForm({
       </div>
       <div className="form-grid">
         <div className="form-field">
-          <label htmlFor="date">Preferred date</label>
+          <label htmlFor="date">Date</label>
           <input
             id="date"
             type="date"
@@ -117,15 +127,15 @@ export function BookingForm({
           {error("date")}
         </div>
         <div className="form-field">
-          <label htmlFor="guests">Guests</label>
+          <label htmlFor="guests">People</label>
           <input id="guests" type="number" min="1" inputMode="numeric" {...register("guests")} />
           {error("guests")}
         </div>
       </div>
       <div className="form-grid">
         <div className="form-field">
-          <label htmlFor="name">Name</label>
-          <input id="name" autoComplete="name" {...register("name")} />
+          <label htmlFor="name">Your name</label>
+          <input id="name" autoComplete="name" placeholder="Enter your name" {...register("name")} />
           {error("name")}
         </div>
         <div className="form-field">
@@ -134,7 +144,7 @@ export function BookingForm({
             id="phone"
             type="tel"
             autoComplete="tel"
-            placeholder="Include country code"
+            placeholder="+91 Enter number"
             {...register("phone")}
           />
           {error("phone")}
@@ -150,9 +160,9 @@ export function BookingForm({
       )}
       <div className="form-field">
         <label htmlFor="message">
-          Anything else? <span>(optional)</span>
+          Additional note <span>(optional)</span>
         </label>
-        <textarea id="message" rows={compact ? 2 : 4} {...register("message")} />
+        <textarea id="message" rows={compact ? 2 : 4} placeholder="Tell us about your trip..." {...register("message")} />
         {error("message")}
       </div>
       {!configured && (

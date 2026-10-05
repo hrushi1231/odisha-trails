@@ -16,3 +16,4 @@
 - Use GSAP/ScrollTrigger only for scroll choreography and Lenis only on desktop, because mobile and reduced-motion modes must remain near-native.
 - Treat generated media as replaceable editorial placeholders and never identify it as a real Rural Camps property or guest.
 - Keep the first three homepage sections isolated as editorial section and motion components so their signature choreography does not affect later homepage content.
+- Keep homepage sections four through seven isolated as editorial section and motion components so the Rent A Camp pin and later reveal sequences remain independently responsive.

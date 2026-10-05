@@ -85,6 +85,31 @@ export const experiences = [
 
 export const koraputStops = ["Talamali", "Deomali", "Duduma", "Gupteswar", "Kolab"] as const;
 
+export const rentCampSteps = [
+  { title: "Find the spot", detail: "You choose a suitable location in Odisha." },
+  { title: "We arrive", detail: "Our team and gear reach the site." },
+  { title: "Setup camp", detail: "We pitch the tents and shape the space." },
+  { title: "Arrange & cook", detail: "The camp kitchen and seating come together." },
+  { title: "Lights on", detail: "Lanterns and fire set the evening mood." },
+  { title: "Camp ready", detail: "The complete campsite is ready for you." },
+] as const;
+
+export const koraputJourneyStops = [
+  { name: "Talamali", description: "Rolling hills with panoramic views.", image: koraputImage },
+  { name: "Deomali", description: "Odisha’s highest peak and endless horizons.", image: koraputImage },
+  { name: "Duduma", description: "Majestic waterfalls in a lush valley.", image: koraputImage },
+  { name: "Gupteswar", description: "Ancient limestone caves and natural wonders.", image: rentCampImage },
+  { name: "Kolab", description: "Serene backwaters and tribal villages.", image: koraputImage },
+] as const;
+
+export const realCampMoments = [
+  { caption: "Ramachandi · coastal nights", image: ramachandiImage },
+  { caption: "Camp setup · after dark", image: rentCampImage },
+  { caption: "Koraput · roads into the hills", image: koraputImage },
+  { caption: "Clear skies · deeper conversations", image: rentCampImage },
+  { caption: "Rural stay · evening light", image: ruralStayImage },
+] as const;
+
 export const tour = {
   slug: "koraput-2-day",
   name: "Koraput 2-Day Journey",
