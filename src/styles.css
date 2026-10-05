@@ -1458,12 +1458,12 @@ img {
 .rc-exp:hover .rc-exp-arrow svg { transform: translateX(4px); }
 .rc-exp-1 { left: 0; bottom: 0; width: clamp(390px, 39%, 720px); }
 .rc-exp-1 .rc-exp-image { aspect-ratio: 1.48/1; border-radius: 0 34% 0 18%; }
-.rc-exp-2 { top: 0; right: 3%; width: clamp(350px, 35%, 620px); }
+.rc-exp-2 { top: 0; right: 3%; width: clamp(340px, 32%, 560px); }
 .rc-exp-2 .rc-exp-image { aspect-ratio: 1.42/1; border-radius: 30% 0 18% 0; }
-.rc-exp-2 .rc-exp-copy { width: 100%; max-width: 300px; margin-top: 1px; }
-.rc-exp-3 { left: 42%; bottom: 0; width: clamp(300px, 28%, 500px); }
+.rc-exp-2 .rc-exp-copy { width: 100%; max-width: clamp(200px, 16vw, 260px); margin-top: 1px; }
+.rc-exp-3 { left: 39%; bottom: 0; width: clamp(280px, 25%, 450px); }
 .rc-exp-3 .rc-exp-image { aspect-ratio: 1.38/1; border-radius: 22% 0 28% 0; }
-.rc-exp-4 { right: 0; bottom: 0; width: clamp(260px, 24%, 430px); }
+.rc-exp-4 { right: 0; bottom: 0; width: clamp(250px, 22%, 400px); }
 .rc-exp-4 .rc-exp-image { aspect-ratio: 1.05/1; border-radius: 35% 0 0 28%; }
 
 .rc-destinations { position: relative; background: var(--camp-charcoal); color: oklch(0.97 0.015 86); }

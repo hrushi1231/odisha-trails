@@ -33,9 +33,9 @@ export function DestinationMotion() {
           }, 0)
             .to(".rc-terrain-edge", { x: () => window.innerWidth * -0.45, ease: "none", duration: 1 }, 0)
             .to(".rc-journey-line", { x: () => window.innerWidth * -0.45, ease: "none", duration: 1 }, 0)
-            .to(".rc-coast-copy", { autoAlpha: 0, x: -50, ease: "none", duration: 0.37 }, 0.28)
+            .to(".rc-coast-copy", { autoAlpha: 0, x: -50, ease: "none", duration: 0.2 }, 0.28)
             .fromTo(".rc-journey-line path", { strokeDashoffset: 1200 }, { strokeDashoffset: 0, ease: "none", duration: 0.65 }, 0.16)
-            .fromTo(".rc-hills-copy", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, ease: "none", duration: 0.38 }, 0.48)
+            .fromTo(".rc-hills-copy", { autoAlpha: 0, x: 50 }, { autoAlpha: 1, x: 0, ease: "none", duration: 0.34 }, 0.5)
             .to(".rc-map-label-coast", { autoAlpha: 0, duration: 0.2 }, 0.32)
             .to(".rc-map-label-hills", { autoAlpha: 1, duration: 0.22 }, 0.58);
 
