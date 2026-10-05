@@ -2,6 +2,7 @@ import heroImage from "@/assets/rural-camps-hero.jpg";
 import koraputImage from "@/assets/koraput-hills.jpg";
 import ramachandiImage from "@/assets/ramachandi-coast.jpg";
 import rentCampImage from "@/assets/rent-camp-sequence.jpg";
+import ruralStayImage from "@/assets/rural-stay-editorial.jpg";
 
 export type ExperienceSlug = "camp" | "rent-a-camp" | "tour" | "rural-stay";
 export type DestinationStatus = "live" | "upcoming" | "planned";
@@ -23,6 +24,7 @@ export const media = {
   ramachandi: ramachandiImage,
   koraput: koraputImage,
   rentCamp: rentCampImage,
+  ruralStay: ruralStayImage,
 } as const;
 
 export const destinations: Destination[] = [
@@ -54,30 +56,30 @@ export const experiences = [
   {
     slug: "camp",
     name: "Camp With Us",
-    description: "A managed outdoor night, made easy.",
+    description: "Join our curated camps in memorable outdoor destinations across Odisha.",
     href: "/destinations",
     image: ramachandiImage,
   },
   {
     slug: "rent-a-camp",
     name: "Rent A Camp",
-    description: "Your place. Our portable camp setup.",
+    description: "Take the outdoors with you. Flexible setups for your own adventure.",
     href: "/rent-a-camp",
     image: rentCampImage,
   },
   {
     slug: "tour",
     name: "Explore With Us",
-    description: "Roads, waterfalls and highland journeys.",
+    description: "Guided journeys through hills, forests, waterfalls and roads.",
     href: "/tours",
     image: koraputImage,
   },
   {
     slug: "rural-stay",
     name: "Rural Stay",
-    description: "Stay closer to the place and its rhythm.",
+    description: "Stay closer to local life and experience rural Odisha.",
     href: "/rural-stay",
-    image: heroImage,
+    image: ruralStayImage,
   },
 ] as const;
 

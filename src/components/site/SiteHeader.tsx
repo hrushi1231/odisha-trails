@@ -14,7 +14,7 @@ const desktopLinks = [
   ["Destinations", "/destinations"],
   ["Rent A Camp", "/rent-a-camp"],
   ["Tours", "/tours"],
-  ["Rural Stay", "/rural-stay"],
+  ["Stay", "/rural-stay"],
   ["About", "/about"],
 ] as const;
 const mobileLinks = [
