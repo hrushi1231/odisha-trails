@@ -10,33 +10,68 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DestinationsRouteImport } from './routes/destinations'
+import { Route as DestinationsKoraputRouteImport } from './routes/destinations.koraput'
+import { Route as DestinationsRamachandiRouteImport } from './routes/destinations.ramachandi'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DestinationsRoute = DestinationsRouteImport.update({
+  id: '/destinations',
+  path: '/destinations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DestinationsKoraputRoute = DestinationsKoraputRouteImport.update({
+  id: '/koraput',
+  path: '/koraput',
+  getParentRoute: () => DestinationsRoute,
+} as any)
+const DestinationsRamachandiRoute = DestinationsRamachandiRouteImport.update({
+  id: '/ramachandi',
+  path: '/ramachandi',
+  getParentRoute: () => DestinationsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/destinations/koraput': typeof DestinationsKoraputRoute
+  '/destinations/ramachandi': typeof DestinationsRamachandiRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/destinations/koraput': typeof DestinationsKoraputRoute
+  '/destinations/ramachandi': typeof DestinationsRamachandiRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/destinations': typeof DestinationsRouteWithChildren
+  '/destinations/koraput': typeof DestinationsKoraputRoute
+  '/destinations/ramachandi': typeof DestinationsRamachandiRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/destinations' | '/destinations/koraput' | '/destinations/ramachandi'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    '/' | '/destinations' | '/destinations/koraput' | '/destinations/ramachandi'
+  id:
+    | '__root__'
+    | '/'
+    | '/destinations'
+    | '/destinations/koraput'
+    | '/destinations/ramachandi'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DestinationsRoute: typeof DestinationsRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +83,47 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/destinations': {
+      id: '/destinations'
+      path: '/destinations'
+      fullPath: '/destinations'
+      preLoaderRoute: typeof DestinationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/destinations/koraput': {
+      id: '/destinations/koraput'
+      path: '/koraput'
+      fullPath: '/destinations/koraput'
+      preLoaderRoute: typeof DestinationsKoraputRouteImport
+      parentRoute: typeof DestinationsRoute
+    }
+    '/destinations/ramachandi': {
+      id: '/destinations/ramachandi'
+      path: '/ramachandi'
+      fullPath: '/destinations/ramachandi'
+      preLoaderRoute: typeof DestinationsRamachandiRouteImport
+      parentRoute: typeof DestinationsRoute
+    }
   }
 }
 
+interface DestinationsRouteChildren {
+  DestinationsKoraputRoute: typeof DestinationsKoraputRoute
+  DestinationsRamachandiRoute: typeof DestinationsRamachandiRoute
+}
+
+const DestinationsRouteChildren: DestinationsRouteChildren = {
+  DestinationsKoraputRoute: DestinationsKoraputRoute,
+  DestinationsRamachandiRoute: DestinationsRamachandiRoute,
+}
+
+const DestinationsRouteWithChildren = DestinationsRoute._addFileChildren(
+  DestinationsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DestinationsRoute: DestinationsRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
