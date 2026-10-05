@@ -11,15 +11,15 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
-import { Route as DestinationsRouteImport } from './routes/destinations'
 import { Route as FaqRouteImport } from './routes/faq'
 import { Route as PlanTripRouteImport } from './routes/plan-trip'
 import { Route as RentACampRouteImport } from './routes/rent-a-camp'
 import { Route as RuralStayRouteImport } from './routes/rural-stay'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ToursRouteImport } from './routes/tours'
+import { Route as DestinationsIndexRouteImport } from './routes/destinations.index'
 import { Route as DestinationsKoraputRouteImport } from './routes/destinations.koraput'
 import { Route as DestinationsRamachandiRouteImport } from './routes/destinations.ramachandi'
+import { Route as ToursIndexRouteImport } from './routes/tours.index'
 import { Route as ToursKoraput2DayRouteImport } from './routes/tours.koraput-2-day'
 
 const IndexRoute = IndexRouteImport.update({
@@ -30,11 +30,6 @@ const IndexRoute = IndexRouteImport.update({
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DestinationsRoute = DestinationsRouteImport.update({
-  id: '/destinations',
-  path: '/destinations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FaqRoute = FaqRouteImport.update({
@@ -62,125 +57,133 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ToursRoute = ToursRouteImport.update({
-  id: '/tours',
-  path: '/tours',
+const DestinationsIndexRoute = DestinationsIndexRouteImport.update({
+  id: '/destinations/',
+  path: '/destinations/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DestinationsKoraputRoute = DestinationsKoraputRouteImport.update({
-  id: '/koraput',
-  path: '/koraput',
-  getParentRoute: () => DestinationsRoute,
+  id: '/destinations/koraput',
+  path: '/destinations/koraput',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const DestinationsRamachandiRoute = DestinationsRamachandiRouteImport.update({
-  id: '/ramachandi',
-  path: '/ramachandi',
-  getParentRoute: () => DestinationsRoute,
+  id: '/destinations/ramachandi',
+  path: '/destinations/ramachandi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToursIndexRoute = ToursIndexRouteImport.update({
+  id: '/tours/',
+  path: '/tours/',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const ToursKoraput2DayRoute = ToursKoraput2DayRouteImport.update({
-  id: '/koraput-2-day',
-  path: '/koraput-2-day',
-  getParentRoute: () => ToursRoute,
+  id: '/tours/koraput-2-day',
+  path: '/tours/koraput-2-day',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/destinations': typeof DestinationsRouteWithChildren
   '/faq': typeof FaqRoute
   '/plan-trip': typeof PlanTripRoute
   '/rent-a-camp': typeof RentACampRoute
   '/rural-stay': typeof RuralStayRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/tours': typeof ToursRouteWithChildren
   '/destinations/koraput': typeof DestinationsKoraputRoute
   '/destinations/ramachandi': typeof DestinationsRamachandiRoute
   '/tours/koraput-2-day': typeof ToursKoraput2DayRoute
+  '/destinations/': typeof DestinationsIndexRoute
+  '/tours/': typeof ToursIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/destinations': typeof DestinationsRouteWithChildren
   '/faq': typeof FaqRoute
   '/plan-trip': typeof PlanTripRoute
   '/rent-a-camp': typeof RentACampRoute
   '/rural-stay': typeof RuralStayRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/tours': typeof ToursRouteWithChildren
   '/destinations/koraput': typeof DestinationsKoraputRoute
   '/destinations/ramachandi': typeof DestinationsRamachandiRoute
   '/tours/koraput-2-day': typeof ToursKoraput2DayRoute
+  '/destinations': typeof DestinationsIndexRoute
+  '/tours': typeof ToursIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
-  '/destinations': typeof DestinationsRouteWithChildren
   '/faq': typeof FaqRoute
   '/plan-trip': typeof PlanTripRoute
   '/rent-a-camp': typeof RentACampRoute
   '/rural-stay': typeof RuralStayRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/tours': typeof ToursRouteWithChildren
   '/destinations/koraput': typeof DestinationsKoraputRoute
   '/destinations/ramachandi': typeof DestinationsRamachandiRoute
   '/tours/koraput-2-day': typeof ToursKoraput2DayRoute
+  '/destinations/': typeof DestinationsIndexRoute
+  '/tours/': typeof ToursIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
     | '/about'
-    | '/destinations'
     | '/faq'
     | '/plan-trip'
     | '/rent-a-camp'
     | '/rural-stay'
     | '/sitemap.xml'
-    | '/tours'
     | '/destinations/koraput'
     | '/destinations/ramachandi'
     | '/tours/koraput-2-day'
+    | '/destinations/'
+    | '/tours/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/about'
-    | '/destinations'
     | '/faq'
     | '/plan-trip'
     | '/rent-a-camp'
     | '/rural-stay'
     | '/sitemap.xml'
-    | '/tours'
     | '/destinations/koraput'
     | '/destinations/ramachandi'
     | '/tours/koraput-2-day'
+    | '/destinations'
+    | '/tours'
   id:
     | '__root__'
     | '/'
     | '/about'
-    | '/destinations'
     | '/faq'
     | '/plan-trip'
     | '/rent-a-camp'
     | '/rural-stay'
     | '/sitemap.xml'
-    | '/tours'
     | '/destinations/koraput'
     | '/destinations/ramachandi'
     | '/tours/koraput-2-day'
+    | '/destinations/'
+    | '/tours/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
-  DestinationsRoute: typeof DestinationsRouteWithChildren
   FaqRoute: typeof FaqRoute
   PlanTripRoute: typeof PlanTripRoute
   RentACampRoute: typeof RentACampRoute
   RuralStayRoute: typeof RuralStayRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  ToursRoute: typeof ToursRouteWithChildren
+  DestinationsKoraputRoute: typeof DestinationsKoraputRoute
+  DestinationsRamachandiRoute: typeof DestinationsRamachandiRoute
+  ToursKoraput2DayRoute: typeof ToursKoraput2DayRoute
+  DestinationsIndexRoute: typeof DestinationsIndexRoute
+  ToursIndexRoute: typeof ToursIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -197,13 +200,6 @@ declare module '@tanstack/react-router' {
       path: '/about'
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/destinations': {
-      id: '/destinations'
-      path: '/destinations'
-      fullPath: '/destinations'
-      preLoaderRoute: typeof DestinationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/faq': {
@@ -241,71 +237,57 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/tours': {
-      id: '/tours'
-      path: '/tours'
-      fullPath: '/tours'
-      preLoaderRoute: typeof ToursRouteImport
+    '/destinations/': {
+      id: '/destinations/'
+      path: '/destinations'
+      fullPath: '/destinations/'
+      preLoaderRoute: typeof DestinationsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/destinations/koraput': {
       id: '/destinations/koraput'
-      path: '/koraput'
+      path: '/destinations/koraput'
       fullPath: '/destinations/koraput'
       preLoaderRoute: typeof DestinationsKoraputRouteImport
-      parentRoute: typeof DestinationsRoute
+      parentRoute: typeof rootRouteImport
     }
     '/destinations/ramachandi': {
       id: '/destinations/ramachandi'
-      path: '/ramachandi'
+      path: '/destinations/ramachandi'
       fullPath: '/destinations/ramachandi'
       preLoaderRoute: typeof DestinationsRamachandiRouteImport
-      parentRoute: typeof DestinationsRoute
+      parentRoute: typeof rootRouteImport
+    }
+    '/tours/': {
+      id: '/tours/'
+      path: '/tours'
+      fullPath: '/tours/'
+      preLoaderRoute: typeof ToursIndexRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/tours/koraput-2-day': {
       id: '/tours/koraput-2-day'
-      path: '/koraput-2-day'
+      path: '/tours/koraput-2-day'
       fullPath: '/tours/koraput-2-day'
       preLoaderRoute: typeof ToursKoraput2DayRouteImport
-      parentRoute: typeof ToursRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
 
-interface DestinationsRouteChildren {
-  DestinationsKoraputRoute: typeof DestinationsKoraputRoute
-  DestinationsRamachandiRoute: typeof DestinationsRamachandiRoute
-}
-
-const DestinationsRouteChildren: DestinationsRouteChildren = {
-  DestinationsKoraputRoute: DestinationsKoraputRoute,
-  DestinationsRamachandiRoute: DestinationsRamachandiRoute,
-}
-
-const DestinationsRouteWithChildren = DestinationsRoute._addFileChildren(
-  DestinationsRouteChildren,
-)
-
-interface ToursRouteChildren {
-  ToursKoraput2DayRoute: typeof ToursKoraput2DayRoute
-}
-
-const ToursRouteChildren: ToursRouteChildren = {
-  ToursKoraput2DayRoute: ToursKoraput2DayRoute,
-}
-
-const ToursRouteWithChildren = ToursRoute._addFileChildren(ToursRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
-  DestinationsRoute: DestinationsRouteWithChildren,
   FaqRoute: FaqRoute,
   PlanTripRoute: PlanTripRoute,
   RentACampRoute: RentACampRoute,
   RuralStayRoute: RuralStayRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  ToursRoute: ToursRouteWithChildren,
+  DestinationsKoraputRoute: DestinationsKoraputRoute,
+  DestinationsRamachandiRoute: DestinationsRamachandiRoute,
+  ToursKoraput2DayRoute: ToursKoraput2DayRoute,
+  DestinationsIndexRoute: DestinationsIndexRoute,
+  ToursIndexRoute: ToursIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
