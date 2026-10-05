@@ -1460,6 +1460,7 @@ img {
 .rc-exp-1 .rc-exp-image { aspect-ratio: 1.48/1; border-radius: 0 34% 0 18%; }
 .rc-exp-2 { top: 0; left: 49%; width: 35%; }
 .rc-exp-2 .rc-exp-image { aspect-ratio: 1.42/1; border-radius: 30% 0 18% 0; }
+.rc-exp-2 .rc-exp-copy { position: absolute; left: 106%; top: 42px; width: 210px; }
 .rc-exp-3 { left: 43%; bottom: 0; width: 29%; }
 .rc-exp-3 .rc-exp-image { aspect-ratio: 1.38/1; border-radius: 22% 0 28% 0; }
 .rc-exp-4 { right: 0; bottom: 0; width: 25%; }
@@ -1499,7 +1500,8 @@ img {
   .site-header { border-bottom: 0; padding-top: 20px; }
   .brand-mark { flex-direction: row; gap: 5px; font-size: 16px; line-height: 1; letter-spacing: 0.15em; }
   .brand-mark span:last-child { letter-spacing: 0.15em; }
-  .site-header > .button { min-height: 48px; border-radius: 999px; background: var(--tent-bone); color: var(--camp-charcoal); box-shadow: none; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+  .site-header > .rc-header-cta { justify-self: end; width: auto; min-height: 48px; border-radius: 999px; padding-inline: 34px; background: var(--tent-bone); color: var(--camp-charcoal); box-shadow: none; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+  .site-header > .rc-header-cta:hover { background: var(--sand); }
 }
 @media (max-width: 1099px) {
   .rc-hero h1 { font-size: clamp(74px, 11vw, 108px); }
@@ -1508,6 +1510,7 @@ img {
   .rc-experience-heading { width: 75%; }
   .rc-exp-1 { width: 48%; }
   .rc-exp-2 { width: 45%; left: auto; right: 0; }
+  .rc-exp-2 .rc-exp-copy { position: relative; left: auto; top: auto; width: auto; }
   .rc-exp-3 { width: 43%; left: 8%; bottom: 0; }
   .rc-exp-4 { width: 42%; bottom: 40px; }
   .rc-destinations { height: auto; }
