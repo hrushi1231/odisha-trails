@@ -15,12 +15,12 @@ const destinationOptions: Record<string, string[]> = {
 export function BookingForm({ compact = false, defaultExperience }: { compact?: boolean; defaultExperience?: BookingValues["experience"] }) {
   const { register, handleSubmit, control, setValue, formState: { errors, isSubmitting } } = useForm<BookingValues>({
     resolver: zodResolver(bookingSchema),
-    defaultValues: { experience: defaultExperience, destination: "", date: "", guests: 2, name: "", phone: "", message: "", pickupPoint: "" },
+    defaultValues: { ...(defaultExperience ? { experience: defaultExperience } : {}), destination: "", date: "", guests: 2, name: "", phone: "", message: "", pickupPoint: "" },
   });
   const experience = useWatch({ control, name: "experience" });
   const options = useMemo(() => destinationOptions[experience ?? ""] ?? [], [experience]);
   useEffect(() => setValue("destination", ""), [experience, setValue]);
-  const configured = Boolean((import.meta.env.VITE_RURAL_CAMPS_WHATSAPP as string | undefined)?.replace(/\D/g, ""));
+  const configured = Boolean((import.meta.env['VITE_RURAL_CAMPS_WHATSAPP'] as string | undefined)?.replace(/\D/g, ""));
   const onSubmit = (values: BookingValues) => {
     window.dispatchEvent(new CustomEvent("booking_form_completed", { detail: { experience: values.experience } }));
     const url = getWhatsAppUrl(values);

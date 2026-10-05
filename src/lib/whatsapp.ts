@@ -22,7 +22,7 @@ export function createWhatsAppMessage(values: BookingValues) {
 }
 
 export function getWhatsAppUrl(values: BookingValues) {
-  const rawNumber = import.meta.env.VITE_RURAL_CAMPS_WHATSAPP as string | undefined;
+  const rawNumber = import.meta.env['VITE_RURAL_CAMPS_WHATSAPP'] as string | undefined;
   const number = rawNumber?.replace(/\D/g, "");
   if (!number) return null;
   return `https://wa.me/${number}?text=${encodeURIComponent(createWhatsAppMessage(values))}`;
