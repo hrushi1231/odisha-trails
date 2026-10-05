@@ -1,0 +1,270 @@
+import { Link } from "@tanstack/react-router";
+import { ArrowDown, ArrowUpRight, Play } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BookingForm } from "@/components/booking/BookingForm";
+import { Reveal } from "@/components/motion/Reveal";
+import { HomeMotion } from "@/components/motion/HomeMotion";
+import { destinations, experiences, koraputStops, media } from "@/data/site";
+
+export function HomePage() {
+  return (
+    <main>
+      <HomeMotion />
+      <section className="home-hero" aria-labelledby="home-title">
+        <img
+          className="hero-media"
+          src={media.hero}
+          alt="Temporary editorial visual of a coastal camp at sunset"
+          width="1600"
+          height="1000"
+          fetchPriority="high"
+        />
+        <div className="media-shade" />
+        <div className="hero-content">
+          <p className="eyebrow hero-reveal">RURAL CAMPS · ODISHA</p>
+          <h1 id="home-title">
+            <span className="hero-reveal">OUTSIDE</span>
+            <span className="hero-reveal italic">THE ORDINARY.</span>
+          </h1>
+          <div className="hero-bottom hero-reveal">
+            <div>
+              <p>Camp. Stay. Explore Odisha differently.</p>
+              <Button asChild size="lg">
+                <Link to="/destinations">
+                  Find your escape <ArrowUpRight />
+                </Link>
+              </Button>
+            </div>
+            <div className="hero-index">
+              {["Ramachandi", "Koraput", "Rent A Camp", "Tours"].map((item, i) => (
+                <span key={item}>
+                  <small>0{i + 1}</small>
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+        <ArrowDown className="scroll-cue" aria-hidden />
+      </section>
+
+      <section className="experiences section-paper">
+        <div className="section-intro">
+          <p className="eyebrow">CHOOSE YOUR EXPERIENCE</p>
+          <h2>
+            DIFFERENT
+            <br />
+            <em>WAYS OUT.</em>
+          </h2>
+          <p>
+            From a night beside the coast to a road through the Eastern Ghats—pick how you want to
+            meet Odisha.
+          </p>
+        </div>
+        <div className="experience-grid">
+          {experiences.map((item, index) => (
+            <Reveal key={item.slug} className={`experience-item item-${index + 1}`}>
+              <Link to={item.href}>
+                <div className="experience-image">
+                  <img src={item.image} alt="" loading="lazy" width="1600" height="1000" />
+                </div>
+                <div className="experience-copy">
+                  <span>0{index + 1}</span>
+                  <h3>{item.name}</h3>
+                  <p>{item.description}</p>
+                  <ArrowUpRight />
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+      <section className="two-worlds">
+        <div className="world-intro">
+          <p className="eyebrow">COAST TO HIGHLANDS</p>
+          <h2>
+            TWO WORLDS.
+            <br />
+            <em>SAME SPIRIT.</em>
+          </h2>
+        </div>
+        {destinations.map((destination, index) => (
+          <article className={`world world-${destination.slug}`} key={destination.slug}>
+            <img
+              src={destination.image}
+              alt={`Temporary editorial visual inspired by ${destination.region}`}
+              loading="lazy"
+              width="1600"
+              height="1000"
+            />
+            <div className="media-shade" />
+            <div className="world-copy">
+              <p className="eyebrow">
+                0{index + 1} · {destination.region}
+              </p>
+              <h3>{destination.name}</h3>
+              <p>{destination.summary}</p>
+              <Link
+                to={
+                  destination.slug === "ramachandi"
+                    ? "/destinations/ramachandi"
+                    : "/destinations/koraput"
+                }
+              >
+                Explore {destination.name} <ArrowUpRight />
+              </Link>
+            </div>
+          </article>
+        ))}
+      </section>
+
+      <section className="rent-story">
+        <img
+          src={media.rentCamp}
+          alt="Temporary editorial visual of a portable camp setup"
+          loading="lazy"
+          width="1600"
+          height="1000"
+        />
+        <div className="media-shade" />
+        <div className="rent-copy">
+          <p className="eyebrow">ANYWHERE SUITABLE IN ODISHA</p>
+          <h2>
+            YOU PICK
+            <br />
+            THE PLACE.
+            <br />
+            <em>WE BRING</em>
+            <br />
+            <em>THE CAMP.</em>
+          </h2>
+          <p>
+            Portable camping for approved locations, shaped around access, conditions and your plan.
+          </p>
+          <Button asChild size="lg">
+            <Link to="/rent-a-camp">
+              Plan a Rent A Camp <ArrowUpRight />
+            </Link>
+          </Button>
+        </div>
+        <div className="setup-steps" aria-label="Camp setup sequence">
+          {["Choose", "Confirm", "Arrive", "Set up", "Camp"].map((s, i) => (
+            <span key={s}>
+              <small>0{i + 1}</small>
+              {s}
+            </span>
+          ))}
+        </div>
+      </section>
+
+      <section className="journey section-paper">
+        <div className="journey-title">
+          <p className="eyebrow">JOURNEYS, NOT JUST STAYS</p>
+          <h2>
+            KORAPUT
+            <br />
+            <em>2-DAY JOURNEY</em>
+          </h2>
+          <p>
+            A route through highlands, waterfalls and sacred landscapes—not a checklist of branches.
+          </p>
+          <Link className="text-link" to="/tours/koraput-2-day">
+            Explore the journey <ArrowUpRight />
+          </Link>
+        </div>
+        <div className="route-map">
+          <svg
+            viewBox="0 0 600 620"
+            role="img"
+            aria-label="Route through Talamali, Deomali, Duduma, Gupteswar and Kolab"
+          >
+            <path
+              className="route-path"
+              d="M90 560 C 230 520, 160 400, 300 365 S 490 260, 390 180 S 270 90, 510 48"
+              fill="none"
+            />
+            <path
+              className="topo-path"
+              d="M20 500 C180 430 40 320 220 240 S500 260 580 80"
+              fill="none"
+            />
+          </svg>
+          {koraputStops.map((stop, i) => (
+            <div key={stop} className={`route-stop stop-${i + 1}`}>
+              <span>{i + 1}</span>
+              <strong>{stop}</strong>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="real-camps">
+        <div className="real-title">
+          <p className="eyebrow">THE REAL THING</p>
+          <h2>
+            REAL PLACES.
+            <br />
+            REAL NIGHTS.
+            <br />
+            <em>REAL PEOPLE.</em>
+          </h2>
+          <p>
+            Owner-approved Rural Camps guest photographs and reels will live here. Until then, we
+            leave the story honest.
+          </p>
+        </div>
+        <div className="filmstrip">
+          <figure>
+            <img
+              src={media.ramachandi}
+              alt="Temporary editorial coastal camping visual"
+              loading="lazy"
+              width="1600"
+              height="1000"
+            />
+            <figcaption>Ramachandi · coastal nights</figcaption>
+          </figure>
+          <figure className="film-video">
+            <img
+              src={media.rentCamp}
+              alt="Temporary editorial campsite setup visual"
+              loading="lazy"
+              width="1600"
+              height="1000"
+            />
+            <span>
+              <Play /> Reel placeholder
+            </span>
+            <figcaption>Rent A Camp · after dark</figcaption>
+          </figure>
+          <figure>
+            <img
+              src={media.koraput}
+              alt="Temporary editorial Koraput landscape visual"
+              loading="lazy"
+              width="1600"
+              height="1000"
+            />
+            <figcaption>Koraput · roads into the hills</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section className="booking-section">
+        <div className="booking-message">
+          <p className="eyebrow">READY TO GET OUT?</p>
+          <h2>
+            PLAN YOUR
+            <br />
+            <em>RURAL CAMPS</em>
+            <br />
+            TRIP.
+          </h2>
+          <p>Bring the date, the people and a rough idea. We’ll help shape the rest.</p>
+        </div>
+        <BookingForm compact />
+      </section>
+    </main>
+  );
+}
