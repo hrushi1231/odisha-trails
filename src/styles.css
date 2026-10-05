@@ -769,8 +769,6 @@ img {
   gap: 15px;
   font-size: 12px;
 }
-@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
-}
 @media (max-width: 1099px) {
   .site-header {
     grid-template-columns: 1fr auto;
@@ -796,9 +794,6 @@ img {
   .experience-item.item-4 {
     grid-column: auto;
     margin-top: 0;
-  }
-  .real-title {
-    grid-template-columns: 1fr;
   }
   .booking-section {
     grid-template-columns: 1fr;
@@ -860,7 +855,6 @@ img {
     padding: 85px 20px 55px;
   }
   .section-intro h2,
-  .real-title h2,
   .booking-message h2,
   .info-note h2,
   .intro-band h2 {
@@ -878,31 +872,6 @@ img {
   }
   .experience-image {
     aspect-ratio: 5/4;
-  }
-  .journey {
-    padding: 85px 20px;
-  }
-  .route-stop strong {
-    font-size: 11px;
-  }
-  .real-camps {
-    padding: 80px 0;
-  }
-  .real-title {
-    padding: 0 20px;
-  }
-  .filmstrip {
-    display: flex;
-    overflow: auto;
-    padding: 0 20px;
-    scroll-snap-type: x mandatory;
-  }
-  .filmstrip figure {
-    min-width: 80vw;
-    scroll-snap-align: center;
-  }
-  .filmstrip figure:nth-child(2) img {
-    aspect-ratio: 4/3;
   }
   .booking-section {
     padding: 80px 20px;
