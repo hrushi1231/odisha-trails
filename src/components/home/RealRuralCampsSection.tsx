@@ -3,11 +3,13 @@ import { ArrowRight, Instagram } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { realCampMoments } from "@/data/site";
 import { RealRuralCampsMotion } from "@/components/motion/RealRuralCampsMotion";
+import { useRef } from "react";
 
 export function RealRuralCampsSection() {
+  const rootRef = useRef<HTMLElement>(null);
   return (
-    <section className="rc-real-camps" aria-labelledby="real-camps-title">
-      <RealRuralCampsMotion />
+    <section ref={rootRef} className="rc-real-camps" aria-labelledby="real-camps-title">
+      <RealRuralCampsMotion rootRef={rootRef} />
       <div className="rc-real-copy">
         <p className="eyebrow rc-real-reveal">06 · Real Rural Camps</p>
         <h2 className="rc-real-reveal" id="real-camps-title">Real places.<br />Real nights.<br />Real people.</h2>

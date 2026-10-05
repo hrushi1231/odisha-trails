@@ -1,38 +1,58 @@
-import { useEffect } from "react";
+import { useEffect, type RefObject } from "react";
+import { loadGsap } from "@/lib/gsap";
 
-export function RentCampMotion() {
+export function RentCampMotion({ rootRef }: { rootRef: RefObject<HTMLElement | null> }) {
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const root = rootRef.current;
+    if (!root) return;
+    let disposed = false;
     let cleanup = () => {};
-    void Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
-      ([{ gsap }, { ScrollTrigger }]) => {
-        gsap.registerPlugin(ScrollTrigger);
+    void loadGsap().then(
+      ({ gsap }) => {
+        if (disposed) return;
         const ctx = gsap.context(() => {
           const mm = gsap.matchMedia();
           mm.add("(min-width: 1100px)", () => {
-            const steps = gsap.utils.toArray<HTMLElement>(".rc-rent-step");
+            const desktop = root.querySelector<HTMLElement>(".rc-rent-desktop");
+            const stage = desktop?.querySelector<HTMLElement>(".rc-rent-stage");
+            if (!desktop || !stage) return;
+            const steps = gsap.utils.toArray<HTMLElement>(".rc-rent-desktop .rc-rent-step", root);
+            const frames = gsap.utils.toArray<HTMLElement>(".rc-rent-desktop .rc-rent-frame", root);
             gsap.set(steps, { opacity: 0.42, y: 8 });
+            gsap.set(frames, { autoAlpha: 0 });
             const firstStep = steps[0];
+            const firstFrame = frames[0];
             if (firstStep) gsap.set(firstStep, { opacity: 1, y: 0 });
+            if (firstFrame) gsap.set(firstFrame, { autoAlpha: 1 });
             const timeline = gsap.timeline({
               scrollTrigger: {
-                trigger: ".rc-rent-desktop",
+                trigger: desktop,
                 start: "top top",
                 end: "+=155%",
-                pin: ".rc-rent-stage",
+                pin: stage,
                 scrub: 0.8,
                 anticipatePin: 1,
                 invalidateOnRefresh: true,
               },
             });
             timeline
-              .to(".rc-rent-scene", { scale: 1.035, ease: "none", duration: 1 }, 0)
+              .to(frames, { scale: 1.035, ease: "none", duration: 1 }, 0)
               .fromTo(".rc-rent-ready-glow", { opacity: 0 }, { opacity: 1, ease: "none", duration: 0.35 }, 0.62);
             steps.forEach((step, index) => {
-              timeline.to(step, { opacity: 1, y: 0, duration: 0.12 }, index * 0.15);
+              const position = index / Math.max(steps.length - 1, 1);
+              timeline.to(step, { opacity: 1, y: 0, duration: 0.1 }, position);
               const previousStep = steps[index - 1];
               if (previousStep) {
-                timeline.to(previousStep, { opacity: 0.62, duration: 0.1 }, index * 0.15);
+                timeline.to(previousStep, { opacity: 0.62, duration: 0.08 }, position);
+              }
+              const frame = frames[index];
+              const previousFrame = frames[index - 1];
+              if (frame && index > 0) {
+                timeline.to(frame, { autoAlpha: 1, duration: 0.12, ease: "none" }, position - 0.06);
+              }
+              if (previousFrame) {
+                timeline.to(previousFrame, { autoAlpha: 0, duration: 0.12, ease: "none" }, position);
               }
             });
             return () => {
@@ -44,10 +64,10 @@ export function RentCampMotion() {
             mm.revert();
             ctx.revert();
           };
-        });
+        }, root);
       },
     );
-    return () => cleanup();
-  }, []);
+    return () => { disposed = true; cleanup(); };
+  }, [rootRef]);
   return null;
 }

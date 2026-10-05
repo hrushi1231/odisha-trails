@@ -1,15 +1,17 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { loadGsap } from "@/lib/gsap";
 
 export function Reveal({ children, className }: { children: ReactNode; className?: string }) {
   const ref = useRef<HTMLDivElement>(null);
   useEffect(() => {
     const node = ref.current;
     if (!node || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    let disposed = false;
     let cleanup = () => {};
-    void Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
-      ([{ gsap }, { ScrollTrigger }]) => {
-        gsap.registerPlugin(ScrollTrigger);
+    void loadGsap().then(
+      ({ gsap }) => {
+        if (disposed) return;
         const ctx = gsap.context(
           () =>
             gsap.fromTo(
@@ -28,7 +30,7 @@ export function Reveal({ children, className }: { children: ReactNode; className
         cleanup = () => ctx.revert();
       },
     );
-    return () => cleanup();
+    return () => { disposed = true; cleanup(); };
   }, []);
   return (
     <div ref={ref} className={cn(className)}>

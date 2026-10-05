@@ -17,3 +17,4 @@
 - Treat generated media as replaceable editorial placeholders and never identify it as a real Rural Camps property or guest.
 - Keep the first three homepage sections isolated as editorial section and motion components so their signature choreography does not affect later homepage content.
 - Keep homepage sections four through seven isolated as editorial section and motion components so the Rent A Camp pin and later reveal sequences remain independently responsive.
+- Load and register GSAP through the shared motion utility, scope homepage animations to section refs, and let ScrollTrigger own pin spacing to prevent leaks and dead scroll.

@@ -1,13 +1,15 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowDown, ArrowRight, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useRef } from "react";
 import { media } from "@/data/site";
 import { HeroMotion } from "@/components/motion/HeroMotion";
 
 export function HeroSection() {
+  const rootRef = useRef<HTMLElement>(null);
   return (
-    <section className="rc-hero" aria-labelledby="home-title">
-      <HeroMotion />
+    <section ref={rootRef} className="rc-hero" aria-labelledby="home-title">
+      <HeroMotion rootRef={rootRef} />
       <img
         className="rc-hero-media"
         src={media.hero}

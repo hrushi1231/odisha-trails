@@ -2,11 +2,13 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 import { experiences } from "@/data/site";
 import { ExperienceMotion } from "@/components/motion/ExperienceMotion";
+import { useRef } from "react";
 
 export function ExperienceSection() {
+  const rootRef = useRef<HTMLElement>(null);
   return (
-    <section className="rc-experiences" aria-labelledby="experience-title">
-      <ExperienceMotion />
+    <section ref={rootRef} className="rc-experiences" aria-labelledby="experience-title">
+      <ExperienceMotion rootRef={rootRef} />
       <div className="rc-paper-lines" aria-hidden />
       <header className="rc-experience-heading">
         <p className="eyebrow">Choose your experience</p>

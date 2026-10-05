@@ -3,6 +3,7 @@ import { ArrowRight, CarFront, CookingPot, Lightbulb, MapPin, Moon, TentTree } f
 import { Button } from "@/components/ui/button";
 import { media, rentCampSteps } from "@/data/site";
 import { RentCampMotion } from "@/components/motion/RentCampMotion";
+import { useRef } from "react";
 
 const stepIcons = [MapPin, CarFront, TentTree, CookingPot, Lightbulb, Moon] as const;
 
@@ -41,12 +42,21 @@ function RentSteps() {
 }
 
 export function RentCampSection() {
+  const rootRef = useRef<HTMLElement>(null);
+  const stageFrames = Array.from({ length: 6 }, (_, index) => ({
+    src: media.rentCamp,
+    alt: index === 5 ? "Temporary editorial visual of a completed camp setup at dusk" : "",
+  }));
   return (
-    <section className="rc-rent" aria-labelledby="rent-camp-title">
-      <RentCampMotion />
+    <section ref={rootRef} className="rc-rent" aria-labelledby="rent-camp-title">
+      <RentCampMotion rootRef={rootRef} />
       <div className="rc-rent-desktop">
         <div className="rc-rent-stage">
-          <img className="rc-rent-scene" src={media.rentCamp} alt="Temporary editorial visual of a camp being prepared at dusk" loading="lazy" width="1600" height="1000" />
+          <div className="rc-rent-frames">
+            {stageFrames.map((frame, index) => (
+              <img className="rc-rent-frame" src={frame.src} alt={frame.alt} aria-hidden={index < 5} loading="lazy" width="1600" height="1000" key={index} />
+            ))}
+          </div>
           <div className="rc-rent-shade" />
           <div className="rc-rent-ready-glow" aria-hidden />
           <div id="rent-camp-title"><RentCopy /></div>

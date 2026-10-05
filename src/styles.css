@@ -87,7 +87,9 @@ body:after {
   z-index: 100;
   pointer-events: none;
   opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-image: url("./assets/paper-grain.png");
+  background-repeat: repeat;
+  background-size: 96px 96px;
 }
 a {
   text-decoration: none;
@@ -353,220 +355,6 @@ img {
   right: 0;
   top: 24px;
   width: 18px;
-}
-.two-worlds {
-  position: relative;
-  background: var(--camp-charcoal);
-  color: oklch(0.97 0.015 86);
-}
-.world-intro {
-  padding: 100px clamp(20px, 4vw, 72px) 55px;
-}
-.world-intro h2 {
-  font-size: clamp(58px, 7vw, 110px);
-  line-height: 0.82;
-}
-.world {
-  position: relative;
-  min-height: 100svh;
-  overflow: hidden;
-}
-.world img {
-  position: absolute;
-  inset: 0;
-  height: 100%;
-}
-.world-copy {
-  position: absolute;
-  z-index: 2;
-  left: clamp(20px, 5vw, 80px);
-  bottom: clamp(45px, 8vw, 100px);
-  max-width: 650px;
-}
-.world-copy h3 {
-  font: 400 clamp(76px, 10vw, 160px)/0.9 var(--font-display);
-}
-.world-copy > p:not(.eyebrow) {
-  max-width: 40ch;
-  line-height: 1.7;
-  margin: 18px 0;
-}
-.world-copy a {
-  display: inline-flex;
-  gap: 10px;
-  align-items: center;
-  text-transform: uppercase;
-  font-size: 12px;
-  border-bottom: 1px solid;
-  padding-bottom: 8px;
-}
-.rent-story {
-  position: relative;
-  min-height: 130vh;
-  background: var(--camp-charcoal);
-  color: oklch(0.97 0.015 86);
-  overflow: hidden;
-}
-.rent-story > img {
-  position: absolute;
-  inset: 0;
-  height: 100%;
-  opacity: 0.88;
-}
-.rent-copy {
-  position: relative;
-  z-index: 2;
-  padding: clamp(120px, 14vw, 210px) clamp(20px, 4vw, 72px);
-  max-width: 880px;
-}
-.rent-copy h2 {
-  font: 400 clamp(65px, 8vw, 124px)/0.76 var(--font-display);
-  margin: 30px 0;
-}
-.rent-copy > p:not(.eyebrow) {
-  max-width: 45ch;
-  line-height: 1.7;
-  margin-bottom: 30px;
-}
-.setup-steps {
-  position: absolute;
-  z-index: 2;
-  bottom: 45px;
-  left: clamp(20px, 4vw, 72px);
-  right: clamp(20px, 4vw, 72px);
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  border-top: 1px solid oklch(1 0 0/0.3);
-  padding-top: 14px;
-}
-.setup-steps span {
-  display: flex;
-  gap: 10px;
-  font-size: 12px;
-}
-.setup-steps small {
-  opacity: 0.5;
-}
-.journey {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  min-height: 100vh;
-  padding: clamp(90px, 10vw, 160px) clamp(20px, 4vw, 72px);
-  gap: 7vw;
-  align-items: center;
-}
-.journey-title > p:not(.eyebrow) {
-  max-width: 42ch;
-  line-height: 1.7;
-  margin: 30px 0;
-}
-.route-map {
-  position: relative;
-  aspect-ratio: 1/1;
-  background: oklch(0.9 0.035 84);
-  border-radius: 50% 45% 48% 42%;
-  overflow: hidden;
-}
-.route-map svg {
-  width: 100%;
-  height: 100%;
-}
-.route-path {
-  stroke: var(--laterite);
-  stroke-width: 3;
-  stroke-dasharray: 1200;
-  stroke-dashoffset: 1200;
-}
-.topo-path {
-  stroke: var(--hill-moss);
-  opacity: 0.25;
-}
-.route-stop {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.route-stop span {
-  display: grid;
-  place-items: center;
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  background: var(--laterite);
-  color: var(--tent-bone);
-  font-size: 10px;
-}
-.stop-1 {
-  left: 6%;
-  bottom: 6%;
-}
-.stop-2 {
-  left: 23%;
-  bottom: 34%;
-}
-.stop-3 {
-  left: 51%;
-  bottom: 43%;
-}
-.stop-4 {
-  left: 60%;
-  top: 25%;
-}
-.stop-5 {
-  right: 4%;
-  top: 4%;
-}
-.real-camps {
-  background: var(--camp-charcoal);
-  color: oklch(0.97 0.015 86);
-  padding: clamp(90px, 10vw, 160px) 0;
-}
-.real-title {
-  padding: 0 clamp(20px, 4vw, 72px);
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 40px;
-  align-items: end;
-}
-.real-title .eyebrow {
-  grid-column: 1/-1;
-}
-.real-title > p:last-child {
-  line-height: 1.7;
-}
-.filmstrip {
-  display: grid;
-  grid-template-columns: 1.1fr 0.7fr 1fr;
-  gap: 16px;
-  align-items: center;
-  margin-top: 80px;
-  overflow: hidden;
-}
-.filmstrip figure {
-  margin: 0;
-}
-.filmstrip img {
-  aspect-ratio: 4/3;
-}
-.filmstrip figure:nth-child(2) img {
-  aspect-ratio: 3/4;
-}
-.filmstrip figcaption {
-  font-size: 11px;
-  text-transform: uppercase;
-  padding: 12px;
-}
-.film-video {
-  position: relative;
-}
-.film-video > span {
-  position: absolute;
-  inset: 45% 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8px;
 }
 .booking-section {
   display: grid;
@@ -981,25 +769,6 @@ img {
   gap: 15px;
   font-size: 12px;
 }
-@media (min-width: 1100px) and (prefers-reduced-motion: no-preference) {
-  .world {
-    position: sticky;
-    top: 0;
-  }
-  .world-koraput {
-    clip-path: inset(0 0 0 0);
-  }
-  .rent-story {
-    min-height: 150vh;
-  }
-  .rent-copy {
-    position: sticky;
-    top: 0;
-  }
-  .route-path {
-    stroke-dasharray: 1200;
-  }
-}
 @media (max-width: 1099px) {
   .site-header {
     grid-template-columns: 1fr auto;
@@ -1009,19 +778,6 @@ img {
   }
   .hero-content h1 .italic {
     padding-left: 0;
-  }
-  .world {
-    min-height: 85svh;
-  }
-  .rent-story {
-    min-height: 100svh;
-  }
-  .journey {
-    grid-template-columns: 1fr;
-  }
-  .route-map {
-    max-width: 620px;
-    margin: auto;
   }
   .section-intro {
     grid-template-columns: 1fr 2fr;
@@ -1038,9 +794,6 @@ img {
   .experience-item.item-4 {
     grid-column: auto;
     margin-top: 0;
-  }
-  .real-title {
-    grid-template-columns: 1fr;
   }
   .booking-section {
     grid-template-columns: 1fr;
@@ -1102,8 +855,6 @@ img {
     padding: 85px 20px 55px;
   }
   .section-intro h2,
-  .journey h2,
-  .real-title h2,
   .booking-message h2,
   .info-note h2,
   .intro-band h2 {
@@ -1121,64 +872,6 @@ img {
   }
   .experience-image {
     aspect-ratio: 5/4;
-  }
-  .world-intro {
-    padding: 80px 20px 40px;
-  }
-  .world-intro h2 {
-    font-size: 54px;
-  }
-  .world {
-    min-height: 78svh;
-  }
-  .world-copy {
-    left: 20px;
-    right: 20px;
-    bottom: 35px;
-  }
-  .world-copy h3 {
-    font-size: 72px;
-  }
-  .rent-story {
-    min-height: 90svh;
-  }
-  .rent-copy {
-    padding: 100px 20px 150px;
-  }
-  .rent-copy h2 {
-    font-size: 58px;
-  }
-  .setup-steps {
-    grid-template-columns: repeat(5, max-content);
-    gap: 20px;
-    overflow: auto;
-    left: 20px;
-    right: 20px;
-  }
-  .journey {
-    padding: 85px 20px;
-  }
-  .route-stop strong {
-    font-size: 11px;
-  }
-  .real-camps {
-    padding: 80px 0;
-  }
-  .real-title {
-    padding: 0 20px;
-  }
-  .filmstrip {
-    display: flex;
-    overflow: auto;
-    padding: 0 20px;
-    scroll-snap-type: x mandatory;
-  }
-  .filmstrip figure {
-    min-width: 80vw;
-    scroll-snap-align: center;
-  }
-  .filmstrip figure:nth-child(2) img {
-    aspect-ratio: 4/3;
   }
   .booking-section {
     padding: 80px 20px;
@@ -1405,7 +1098,9 @@ img {
   inset: 0;
   pointer-events: none;
   opacity: 0.1;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence baseFrequency='.65' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.22'/%3E%3C/svg%3E");
+  background-image: url("./assets/paper-grain.png");
+  background-repeat: repeat;
+  background-size: 96px 96px;
 }
 .rc-paper-lines {
   position: absolute;
@@ -1467,13 +1162,13 @@ img {
 .rc-exp-4 .rc-exp-image { aspect-ratio: 1.05/1; border-radius: 35% 0 0 28%; }
 
 .rc-destinations { position: relative; background: var(--camp-charcoal); color: oklch(0.97 0.015 86); }
-.rc-destination-desktop { display: block; height: 240svh; }
+.rc-destination-desktop { display: block; min-height: 100svh; }
 .rc-destination-mobile { display: none; }
 .rc-destination-stage { position: relative; height: 100svh; overflow: hidden; }
 .rc-place { position: absolute; inset: 0; overflow: hidden; }
 .rc-place img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .rc-place-coast { right: 30%; }
-.rc-place-hills { clip-path: polygon(68% 0, 100% 0, 100% 100%, 68% 100%, 63% 80%, 69% 62%, 63% 45%, 70% 25%); will-change: clip-path; }
+.rc-place-hills { clip-path: polygon(24% 0, 100% 0, 100% 100%, 22% 100%, 18% 80%, 24% 62%, 18% 45%, 26% 25%); will-change: transform; }
 .rc-place-shade { position: absolute; inset: 0; background: linear-gradient(0deg, oklch(0.05 0.01 145 / 0.68), transparent 60%); }
 .rc-place-copy { position: absolute; z-index: 3; bottom: clamp(54px, 8vh, 88px); }
 .rc-coast-copy { left: clamp(26px, 6vw, 88px); }
@@ -1528,6 +1223,7 @@ img {
   .rc-terrain-edge, .rc-journey-line, .rc-map-label { display: none !important; }
 }
 @media (max-width: 767px) {
+  body::after, .rc-experiences::before, .rc-koraput-journey::after { display: none; }
   .rc-hero-media { object-position: 62% center; }
   .rc-hero-content { padding: 120px 20px 86px; }
   .rc-hero h1 { font-size: clamp(61px, 18vw, 78px); line-height: 0.8; }
@@ -1575,9 +1271,10 @@ img {
 .rc-rent-desktop { display: none; }
 .rc-rent-mobile { display: block; }
 .rc-rent-stage { position: relative; height: 100svh; min-height: 760px; overflow: hidden; }
-.rc-rent-scene,
+.rc-rent-frame,
 .rc-rent-mobile-media img { width: 100%; height: 100%; object-fit: cover; object-position: center 56%; }
-.rc-rent-scene { position: absolute; inset: 0; will-change: transform; }
+.rc-rent-frames, .rc-rent-frame { position: absolute; inset: 0; width: 100%; height: 100%; }
+.rc-rent-frame { will-change: transform, opacity; }
 .rc-rent-shade {
   position: absolute;
   inset: 0;
@@ -1644,7 +1341,9 @@ img {
   inset: 0;
   z-index: -1;
   opacity: 0.09;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence baseFrequency='.7' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.28'/%3E%3C/svg%3E");
+  background-image: url("./assets/paper-grain.png");
+  background-repeat: repeat;
+  background-size: 96px 96px;
 }
 .rc-journey-topography { position: absolute; inset: 0 34% 0 0; z-index: -1; background: repeating-radial-gradient(ellipse at 18% 88%, transparent 0 24px, var(--laterite) 25px 26px, transparent 27px 42px); opacity: 0.08; }
 .rc-journey-intro { align-self: center; padding: clamp(68px, 7vw, 110px) 0 clamp(68px, 7vw, 110px) clamp(28px, 4vw, 70px); }
@@ -1742,7 +1441,7 @@ img {
 .rc-plan-form .config-note { color: var(--sand); }
 
 @media (min-width: 1100px) {
-  .rc-rent-desktop { display: block; height: 255svh; }
+  .rc-rent-desktop { display: block; min-height: 100svh; }
   .rc-rent-mobile { display: none; }
 }
 
@@ -1801,7 +1500,7 @@ img {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .rc-rent-desktop { height: 100svh; }
+  .rc-rent-desktop { min-height: 100svh; }
   .rc-rent-ready-glow,
   .rc-rent-step,
   .rc-route-draw,
