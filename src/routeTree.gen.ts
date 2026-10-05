@@ -10,9 +10,13 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as DestinationsRouteImport } from './routes/destinations'
+import { Route as FaqRouteImport } from './routes/faq'
+import { Route as PlanTripRouteImport } from './routes/plan-trip'
 import { Route as RentACampRouteImport } from './routes/rent-a-camp'
 import { Route as RuralStayRouteImport } from './routes/rural-stay'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ToursRouteImport } from './routes/tours'
 import { Route as DestinationsKoraputRouteImport } from './routes/destinations.koraput'
 import { Route as DestinationsRamachandiRouteImport } from './routes/destinations.ramachandi'
@@ -23,9 +27,24 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DestinationsRoute = DestinationsRouteImport.update({
   id: '/destinations',
   path: '/destinations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FaqRoute = FaqRouteImport.update({
+  id: '/faq',
+  path: '/faq',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlanTripRoute = PlanTripRouteImport.update({
+  id: '/plan-trip',
+  path: '/plan-trip',
   getParentRoute: () => rootRouteImport,
 } as any)
 const RentACampRoute = RentACampRouteImport.update({
@@ -36,6 +55,11 @@ const RentACampRoute = RentACampRouteImport.update({
 const RuralStayRoute = RuralStayRouteImport.update({
   id: '/rural-stay',
   path: '/rural-stay',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ToursRoute = ToursRouteImport.update({
@@ -61,9 +85,13 @@ const ToursKoraput2DayRoute = ToursKoraput2DayRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/destinations': typeof DestinationsRouteWithChildren
+  '/faq': typeof FaqRoute
+  '/plan-trip': typeof PlanTripRoute
   '/rent-a-camp': typeof RentACampRoute
   '/rural-stay': typeof RuralStayRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tours': typeof ToursRouteWithChildren
   '/destinations/koraput': typeof DestinationsKoraputRoute
   '/destinations/ramachandi': typeof DestinationsRamachandiRoute
@@ -71,9 +99,13 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/destinations': typeof DestinationsRouteWithChildren
+  '/faq': typeof FaqRoute
+  '/plan-trip': typeof PlanTripRoute
   '/rent-a-camp': typeof RentACampRoute
   '/rural-stay': typeof RuralStayRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tours': typeof ToursRouteWithChildren
   '/destinations/koraput': typeof DestinationsKoraputRoute
   '/destinations/ramachandi': typeof DestinationsRamachandiRoute
@@ -82,9 +114,13 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/destinations': typeof DestinationsRouteWithChildren
+  '/faq': typeof FaqRoute
+  '/plan-trip': typeof PlanTripRoute
   '/rent-a-camp': typeof RentACampRoute
   '/rural-stay': typeof RuralStayRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tours': typeof ToursRouteWithChildren
   '/destinations/koraput': typeof DestinationsKoraputRoute
   '/destinations/ramachandi': typeof DestinationsRamachandiRoute
@@ -94,9 +130,13 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/destinations'
+    | '/faq'
+    | '/plan-trip'
     | '/rent-a-camp'
     | '/rural-stay'
+    | '/sitemap.xml'
     | '/tours'
     | '/destinations/koraput'
     | '/destinations/ramachandi'
@@ -104,9 +144,13 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/destinations'
+    | '/faq'
+    | '/plan-trip'
     | '/rent-a-camp'
     | '/rural-stay'
+    | '/sitemap.xml'
     | '/tours'
     | '/destinations/koraput'
     | '/destinations/ramachandi'
@@ -114,9 +158,13 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/destinations'
+    | '/faq'
+    | '/plan-trip'
     | '/rent-a-camp'
     | '/rural-stay'
+    | '/sitemap.xml'
     | '/tours'
     | '/destinations/koraput'
     | '/destinations/ramachandi'
@@ -125,9 +173,13 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   DestinationsRoute: typeof DestinationsRouteWithChildren
+  FaqRoute: typeof FaqRoute
+  PlanTripRoute: typeof PlanTripRoute
   RentACampRoute: typeof RentACampRoute
   RuralStayRoute: typeof RuralStayRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ToursRoute: typeof ToursRouteWithChildren
 }
 
@@ -140,11 +192,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/destinations': {
       id: '/destinations'
       path: '/destinations'
       fullPath: '/destinations'
       preLoaderRoute: typeof DestinationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/faq': {
+      id: '/faq'
+      path: '/faq'
+      fullPath: '/faq'
+      preLoaderRoute: typeof FaqRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/plan-trip': {
+      id: '/plan-trip'
+      path: '/plan-trip'
+      fullPath: '/plan-trip'
+      preLoaderRoute: typeof PlanTripRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/rent-a-camp': {
@@ -159,6 +232,13 @@ declare module '@tanstack/react-router' {
       path: '/rural-stay'
       fullPath: '/rural-stay'
       preLoaderRoute: typeof RuralStayRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tours': {
@@ -218,9 +298,13 @@ const ToursRouteWithChildren = ToursRoute._addFileChildren(ToursRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   DestinationsRoute: DestinationsRouteWithChildren,
+  FaqRoute: FaqRoute,
+  PlanTripRoute: PlanTripRoute,
   RentACampRoute: RentACampRoute,
   RuralStayRoute: RuralStayRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ToursRoute: ToursRouteWithChildren,
 }
 export const routeTree = rootRouteImport
