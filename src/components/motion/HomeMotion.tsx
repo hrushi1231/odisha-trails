@@ -18,12 +18,22 @@ export function HomeMotion() {
           gsap.to(".hero-media", {
             scale: 1.04,
             ease: "none",
-            scrollTrigger: { trigger: ".home-hero", start: "top top", end: "bottom top", scrub: true },
+            scrollTrigger: {
+              trigger: ".home-hero",
+              start: "top top",
+              end: "bottom top",
+              scrub: true,
+            },
           });
           gsap.to(".route-path", {
             strokeDashoffset: 0,
             ease: "none",
-            scrollTrigger: { trigger: ".journey", start: "top 70%", end: "bottom 70%", scrub: true },
+            scrollTrigger: {
+              trigger: ".journey",
+              start: "top 70%",
+              end: "bottom 70%",
+              scrub: true,
+            },
           });
           if (window.matchMedia("(min-width: 1100px)").matches) {
             gsap.fromTo(

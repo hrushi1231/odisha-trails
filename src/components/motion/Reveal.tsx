@@ -10,22 +10,22 @@ export function Reveal({ children, className }: { children: ReactNode; className
     void Promise.all([import("gsap"), import("gsap/ScrollTrigger")]).then(
       ([{ gsap }, { ScrollTrigger }]) => {
         gsap.registerPlugin(ScrollTrigger);
-      const ctx = gsap.context(
-        () =>
-          gsap.fromTo(
-            node,
-            { y: 42, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.9,
-              ease: "power4.out",
-              scrollTrigger: { trigger: node, start: "top 88%" },
-            },
-          ),
-        node,
-      );
-      cleanup = () => ctx.revert();
+        const ctx = gsap.context(
+          () =>
+            gsap.fromTo(
+              node,
+              { y: 42, opacity: 0 },
+              {
+                y: 0,
+                opacity: 1,
+                duration: 0.9,
+                ease: "power4.out",
+                scrollTrigger: { trigger: node, start: "top 88%" },
+              },
+            ),
+          node,
+        );
+        cleanup = () => ctx.revert();
       },
     );
     return () => cleanup();
