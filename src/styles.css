@@ -1306,3 +1306,243 @@ img {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Homepage opening editorial sequence */
+.rc-hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  color: oklch(0.97 0.015 86);
+  background: var(--camp-charcoal);
+}
+.rc-hero-media {
+  position: absolute;
+  inset: 0;
+  height: 100%;
+  object-position: center center;
+  will-change: transform;
+}
+.rc-hero-shade {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, oklch(0.05 0.01 145 / 0.62) 0%, oklch(0.05 0.01 145 / 0.18) 48%, transparent 74%), linear-gradient(0deg, oklch(0.05 0.01 145 / 0.5), transparent 48%);
+}
+.rc-hero-content {
+  position: relative;
+  z-index: 2;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 136px clamp(24px, 4.7vw, 68px) clamp(46px, 8vh, 74px);
+}
+.rc-hero-eyebrow { margin-bottom: 14px; }
+.rc-hero h1 {
+  font-size: clamp(88px, 8vw, 138px);
+  line-height: 0.79;
+  text-transform: uppercase;
+  letter-spacing: 0;
+  max-width: 780px;
+}
+.rc-title-mask { display: block; overflow: hidden; padding-bottom: 0.08em; margin-bottom: -0.08em; }
+.rc-title-mask > span { display: block; }
+.rc-hero-action { margin-top: 26px; }
+.rc-hero-action > p { font-size: clamp(16px, 1.4vw, 21px); margin-bottom: 20px; }
+.rc-cream-button {
+  min-height: 52px;
+  border-radius: 999px;
+  padding-inline: 32px;
+  background: var(--tent-bone);
+  color: var(--camp-charcoal);
+  box-shadow: none;
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+.rc-cream-button:hover { background: var(--sand); }
+.rc-scroll-cue {
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  bottom: 34px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 0.16em;
+}
+.rc-scroll-cue svg { width: 18px; height: 18px; }
+.rc-destination-index {
+  position: absolute;
+  z-index: 3;
+  right: clamp(24px, 4.7vw, 68px);
+  bottom: 34px;
+  display: grid;
+  width: 130px;
+  gap: 8px;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 9px;
+  letter-spacing: 0.13em;
+}
+.rc-destination-index i { display: block; height: 1px; background: currentColor; opacity: 0.7; }
+.rc-destination-index small { font-size: 9px; }
+
+.rc-experiences {
+  position: relative;
+  min-height: 1000px;
+  overflow: hidden;
+  padding: clamp(84px, 8vw, 118px) clamp(24px, 4vw, 58px) 90px;
+  background: var(--tent-bone);
+}
+.rc-experiences::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.1;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='p'%3E%3CfeTurbulence baseFrequency='.65' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23p)' opacity='.22'/%3E%3C/svg%3E");
+}
+.rc-paper-lines {
+  position: absolute;
+  right: -80px;
+  top: 300px;
+  width: 270px;
+  height: 430px;
+  border: 1px solid var(--laterite);
+  border-radius: 46% 54% 42% 58%;
+  opacity: 0.18;
+  transform: rotate(10deg);
+}
+.rc-experience-heading { position: relative; z-index: 2; width: 48%; }
+.rc-experience-heading h2 {
+  margin-top: 8px;
+  font: 400 clamp(72px, 7vw, 112px) / 0.72 var(--font-display);
+  text-transform: uppercase;
+}
+.rc-experience-heading > p:last-child {
+  display: inline-block;
+  margin-top: 18px;
+  padding-top: 10px;
+  border-top: 1px solid var(--laterite);
+  font: 400 17px/1.4 var(--font-display);
+}
+.rc-experience-composition { position: relative; z-index: 1; min-height: 710px; margin-top: -155px; }
+.rc-exp { position: absolute; }
+.rc-exp a { display: block; }
+.rc-exp-image { overflow: hidden; }
+.rc-exp-image img { height: 100%; transition: transform 0.75s cubic-bezier(.2,.75,.2,1); }
+.rc-exp:hover .rc-exp-image img { transform: scale(1.035); }
+.rc-exp-copy { position: relative; padding: 13px 0 0 6px; max-width: 330px; }
+.rc-exp-copy > span:first-child { font-size: 9px; font-weight: 700; }
+.rc-exp-copy > i { display: block; width: 24px; height: 1px; margin: 7px 0 8px; background: var(--laterite); transition: width 0.35s; }
+.rc-exp:hover .rc-exp-copy > i { width: 54px; }
+.rc-exp-copy h3 { font: 400 clamp(27px, 2.45vw, 39px)/0.95 var(--font-display); text-transform: uppercase; }
+.rc-exp-copy p { margin-top: 7px; max-width: 29ch; font: 400 13px/1.35 var(--font-display); color: var(--muted-foreground); }
+.rc-exp-arrow {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--camp-charcoal);
+  border-radius: 50%;
+}
+.rc-exp-arrow svg { width: 18px; transition: transform 0.3s; }
+.rc-exp:hover .rc-exp-arrow svg { transform: translateX(4px); }
+.rc-exp-1 { left: 0; bottom: 0; width: 39%; }
+.rc-exp-1 .rc-exp-image { aspect-ratio: 1.48/1; border-radius: 0 34% 0 18%; }
+.rc-exp-2 { top: 0; left: 49%; width: 35%; }
+.rc-exp-2 .rc-exp-image { aspect-ratio: 1.42/1; border-radius: 30% 0 18% 0; }
+.rc-exp-2 .rc-exp-copy { position: absolute; left: 106%; top: 42px; width: 210px; }
+.rc-exp-3 { left: 43%; bottom: 0; width: 29%; }
+.rc-exp-3 .rc-exp-image { aspect-ratio: 1.38/1; border-radius: 22% 0 28% 0; }
+.rc-exp-4 { right: 0; bottom: 0; width: 25%; }
+.rc-exp-4 .rc-exp-image { aspect-ratio: 1.05/1; border-radius: 35% 0 0 28%; }
+
+.rc-destinations { position: relative; height: 240svh; background: var(--camp-charcoal); color: oklch(0.97 0.015 86); }
+.rc-destination-stage { position: relative; height: 100svh; overflow: hidden; }
+.rc-place { position: absolute; inset: 0; overflow: hidden; }
+.rc-place img { position: absolute; inset: 0; width: 100%; height: 100%; }
+.rc-place-coast { right: 30%; }
+.rc-place-hills { clip-path: polygon(70% 0, 100% 0, 100% 100%, 62% 100%, 68% 78%, 60% 61%, 71% 43%, 64% 24%); will-change: clip-path; }
+.rc-place-shade { position: absolute; inset: 0; background: linear-gradient(0deg, oklch(0.05 0.01 145 / 0.68), transparent 60%); }
+.rc-place-copy { position: absolute; z-index: 3; bottom: clamp(54px, 8vh, 88px); }
+.rc-coast-copy { left: clamp(26px, 6vw, 88px); }
+.rc-hills-copy { right: clamp(26px, 6vw, 88px); text-align: right; opacity: 0; }
+.rc-place-copy h2 { font: 400 clamp(80px, 9vw, 142px)/0.82 var(--font-display); text-transform: uppercase; }
+.rc-place-copy > p:not(.eyebrow) { margin: 14px 0 22px; font-size: clamp(15px, 1.5vw, 20px); letter-spacing: 0.08em; }
+.rc-terrain-edge {
+  position: absolute;
+  z-index: 4;
+  left: 64%;
+  top: -5%;
+  width: 90px;
+  height: 110%;
+  border-left: 1px solid oklch(0.97 0.015 86 / 0.5);
+  transform: rotate(3deg) skewY(-8deg);
+  will-change: transform;
+}
+.rc-journey-line { position: absolute; z-index: 5; left: 60%; top: 0; width: 120px; height: 100%; overflow: visible; will-change: transform; }
+.rc-journey-line path { fill: none; stroke: var(--tent-bone); stroke-width: 2; stroke-dasharray: 1200; stroke-dashoffset: 0; }
+.rc-journey-line circle { fill: var(--tent-bone); }
+.rc-map-label { position: absolute; z-index: 6; text-transform: uppercase; font-size: 9px; letter-spacing: 0.14em; }
+.rc-map-label-coast { left: 61%; top: 9%; }
+.rc-map-label-hills { left: 33%; bottom: 8%; opacity: 0; }
+
+@media (min-width: 1100px) {
+  .site-header { border-bottom: 0; padding-top: 20px; }
+  .brand-mark { flex-direction: row; gap: 5px; font-size: 16px; line-height: 1; letter-spacing: 0.15em; }
+  .brand-mark span:last-child { letter-spacing: 0.15em; }
+  .site-header > .rc-header-cta { justify-self: end; width: auto; min-height: 48px; border-radius: 999px; padding-inline: 34px; background: var(--tent-bone); color: var(--camp-charcoal); box-shadow: none; text-transform: uppercase; font-size: 11px; letter-spacing: 0.1em; }
+  .site-header > .rc-header-cta:hover { background: var(--sand); }
+}
+@media (max-width: 1099px) {
+  .rc-hero h1 { font-size: clamp(74px, 11vw, 108px); }
+  .rc-experiences { min-height: 1250px; }
+  .rc-experience-composition { margin-top: 30px; min-height: 940px; }
+  .rc-experience-heading { width: 75%; }
+  .rc-exp-1 { width: 48%; }
+  .rc-exp-2 { width: 45%; left: auto; right: 0; }
+  .rc-exp-2 .rc-exp-copy { position: relative; left: auto; top: auto; width: auto; }
+  .rc-exp-3 { width: 43%; left: 8%; bottom: 0; }
+  .rc-exp-4 { width: 42%; bottom: 40px; }
+  .rc-destinations { height: auto; }
+  .rc-destination-stage { height: auto; overflow: visible; }
+  .rc-place { position: relative; inset: auto; min-height: 86svh; }
+  .rc-place-coast { right: auto; }
+  .rc-place-hills { clip-path: none; }
+  .rc-hills-copy { opacity: 1; }
+  .rc-terrain-edge, .rc-journey-line, .rc-map-label { display: none; }
+}
+@media (max-width: 767px) {
+  .rc-hero-media { object-position: 62% center; }
+  .rc-hero-content { padding: 120px 20px 86px; }
+  .rc-hero h1 { font-size: clamp(61px, 18vw, 78px); line-height: 0.8; }
+  .rc-hero-action { margin-top: 20px; }
+  .rc-hero-action > p { max-width: 270px; font-size: 15px; }
+  .rc-scroll-cue { display: none; }
+  .rc-destination-index { right: 20px; bottom: 22px; width: 104px; }
+  .rc-experiences { min-height: 0; padding: 76px 20px 90px; }
+  .rc-experience-heading { width: 100%; }
+  .rc-experience-heading h2 { font-size: clamp(57px, 17vw, 76px); }
+  .rc-experience-composition { display: grid; grid-template-columns: 1fr; gap: 58px; min-height: 0; margin-top: 55px; }
+  .rc-exp, .rc-exp-1, .rc-exp-2, .rc-exp-3, .rc-exp-4 { position: relative; inset: auto; width: 100%; }
+  .rc-exp:nth-child(even) { width: 88%; margin-left: auto; }
+  .rc-exp:nth-child(odd) { width: 92%; }
+  .rc-exp-1 .rc-exp-image, .rc-exp-2 .rc-exp-image, .rc-exp-3 .rc-exp-image, .rc-exp-4 .rc-exp-image { aspect-ratio: 1.25/1; }
+  .rc-exp-copy { padding-right: 48px; }
+  .rc-exp-copy h3 { font-size: 31px; }
+  .rc-place { min-height: 86svh; }
+  .rc-place img { object-position: center; }
+  .rc-place-copy { left: 20px; right: 20px; bottom: 38px; text-align: left; }
+  .rc-place-copy h2 { font-size: clamp(62px, 19vw, 84px); }
+  .rc-place-copy > p:not(.eyebrow) { font-size: 14px; letter-spacing: 0; }
+  .rc-cream-button { min-height: 48px; padding-inline: 24px; }
+}

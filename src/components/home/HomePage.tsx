@@ -1,123 +1,18 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowDown, ArrowUpRight, Play } from "lucide-react";
+import { ArrowUpRight, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BookingForm } from "@/components/booking/BookingForm";
-import { Reveal } from "@/components/motion/Reveal";
-import { HomeMotion } from "@/components/motion/HomeMotion";
-import { destinations, experiences, koraputStops, media } from "@/data/site";
+import { HeroSection } from "@/components/home/HeroSection";
+import { ExperienceSection } from "@/components/home/ExperienceSection";
+import { DestinationTransition } from "@/components/home/DestinationTransition";
+import { koraputStops, media } from "@/data/site";
 
 export function HomePage() {
   return (
     <main>
-      <HomeMotion />
-      <section className="home-hero" aria-labelledby="home-title">
-        <img
-          className="hero-media"
-          src={media.hero}
-          alt="Temporary editorial visual of a coastal camp at sunset"
-          width="1600"
-          height="1000"
-          fetchPriority="high"
-        />
-        <div className="media-shade" />
-        <div className="hero-content">
-          <p className="eyebrow hero-reveal">RURAL CAMPS · ODISHA</p>
-          <h1 id="home-title">
-            <span className="hero-reveal">OUTSIDE</span>
-            <span className="hero-reveal italic">THE ORDINARY.</span>
-          </h1>
-          <div className="hero-bottom hero-reveal">
-            <div>
-              <p>Camp. Stay. Explore Odisha differently.</p>
-              <Button asChild size="lg">
-                <Link to="/destinations">
-                  Find your escape <ArrowUpRight />
-                </Link>
-              </Button>
-            </div>
-            <div className="hero-index">
-              {["Ramachandi", "Koraput", "Rent A Camp", "Tours"].map((item, i) => (
-                <span key={item}>
-                  <small>0{i + 1}</small>
-                  {item}
-                </span>
-              ))}
-            </div>
-          </div>
-        </div>
-        <ArrowDown className="scroll-cue" aria-hidden />
-      </section>
-
-      <section className="experiences section-paper">
-        <div className="section-intro">
-          <p className="eyebrow">CHOOSE YOUR EXPERIENCE</p>
-          <h2>
-            DIFFERENT
-            <br />
-            <em>WAYS OUT.</em>
-          </h2>
-          <p>
-            From a night beside the coast to a road through the Eastern Ghats—pick how you want to
-            meet Odisha.
-          </p>
-        </div>
-        <div className="experience-grid">
-          {experiences.map((item, index) => (
-            <Reveal key={item.slug} className={`experience-item item-${index + 1}`}>
-              <Link to={item.href}>
-                <div className="experience-image">
-                  <img src={item.image} alt="" loading="lazy" width="1600" height="1000" />
-                </div>
-                <div className="experience-copy">
-                  <span>0{index + 1}</span>
-                  <h3>{item.name}</h3>
-                  <p>{item.description}</p>
-                  <ArrowUpRight />
-                </div>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </section>
-
-      <section className="two-worlds">
-        <div className="world-intro">
-          <p className="eyebrow">COAST TO HIGHLANDS</p>
-          <h2>
-            TWO WORLDS.
-            <br />
-            <em>SAME SPIRIT.</em>
-          </h2>
-        </div>
-        {destinations.map((destination, index) => (
-          <article className={`world world-${destination.slug}`} key={destination.slug}>
-            <img
-              src={destination.image}
-              alt={`Temporary editorial visual inspired by ${destination.region}`}
-              loading="lazy"
-              width="1600"
-              height="1000"
-            />
-            <div className="media-shade" />
-            <div className="world-copy">
-              <p className="eyebrow">
-                0{index + 1} · {destination.region}
-              </p>
-              <h3>{destination.name}</h3>
-              <p>{destination.summary}</p>
-              <Link
-                to={
-                  destination.slug === "ramachandi"
-                    ? "/destinations/ramachandi"
-                    : "/destinations/koraput"
-                }
-              >
-                Explore {destination.name} <ArrowUpRight />
-              </Link>
-            </div>
-          </article>
-        ))}
-      </section>
+      <HeroSection />
+      <ExperienceSection />
+      <DestinationTransition />
 
       <section className="rent-story">
         <img

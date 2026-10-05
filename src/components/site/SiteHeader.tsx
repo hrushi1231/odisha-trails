@@ -12,9 +12,9 @@ import {
 
 const desktopLinks = [
   ["Destinations", "/destinations"],
+  ["Stay", "/rural-stay"],
   ["Rent A Camp", "/rent-a-camp"],
   ["Tours", "/tours"],
-  ["Rural Stay", "/rural-stay"],
   ["About", "/about"],
 ] as const;
 const mobileLinks = [
@@ -41,7 +41,7 @@ export function SiteHeader() {
           </Link>
         ))}
       </nav>
-      <Button asChild size="lg" className="hidden min-[1100px]:inline-flex">
+      <Button asChild size="lg" className="rc-header-cta hidden min-[1100px]:inline-flex">
         <Link to="/plan-trip">
           Plan a trip <span aria-hidden>↗</span>
         </Link>
