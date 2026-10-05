@@ -187,6 +187,9 @@ img {
 .site-header > .button {
   justify-self: end;
 }
+.site-header:has(+ .plan-page) {
+  background: color-mix(in oklab, var(--camp-charcoal) 88%, transparent);
+}
 .mobile-menu {
   background: var(--tent-bone);
   width: min(90vw, 430px);
