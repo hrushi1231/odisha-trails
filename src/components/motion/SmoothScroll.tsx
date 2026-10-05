@@ -8,7 +8,9 @@ export function SmoothScroll() {
     let cleanup = () => {};
     void (async () => {
       const [{ default: Lenis }, { gsap }, { ScrollTrigger }] = await Promise.all([
-        import("lenis"), import("gsap"), import("gsap/ScrollTrigger"),
+        import("lenis"),
+        import("gsap"),
+        import("gsap/ScrollTrigger"),
       ]);
       gsap.registerPlugin(ScrollTrigger);
       const lenis = new Lenis({ smoothWheel: true, duration: 0.8 });
@@ -16,7 +18,10 @@ export function SmoothScroll() {
       const ticker = (time: number) => lenis.raf(time * 1000);
       gsap.ticker.add(ticker);
       gsap.ticker.lagSmoothing(0);
-      cleanup = () => { gsap.ticker.remove(ticker); lenis.destroy(); };
+      cleanup = () => {
+        gsap.ticker.remove(ticker);
+        lenis.destroy();
+      };
     });
     return () => cleanup();
   }, []);

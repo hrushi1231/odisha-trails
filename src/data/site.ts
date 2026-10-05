@@ -51,10 +51,34 @@ export const destinations: Destination[] = [
 ];
 
 export const experiences = [
-  { slug: "camp", name: "Camp With Us", description: "A managed outdoor night, made easy.", href: "/destinations", image: ramachandiImage },
-  { slug: "rent-a-camp", name: "Rent A Camp", description: "Your place. Our portable camp setup.", href: "/rent-a-camp", image: rentCampImage },
-  { slug: "tour", name: "Explore With Us", description: "Roads, waterfalls and highland journeys.", href: "/tours", image: koraputImage },
-  { slug: "rural-stay", name: "Rural Stay", description: "Stay closer to the place and its rhythm.", href: "/rural-stay", image: heroImage },
+  {
+    slug: "camp",
+    name: "Camp With Us",
+    description: "A managed outdoor night, made easy.",
+    href: "/destinations",
+    image: ramachandiImage,
+  },
+  {
+    slug: "rent-a-camp",
+    name: "Rent A Camp",
+    description: "Your place. Our portable camp setup.",
+    href: "/rent-a-camp",
+    image: rentCampImage,
+  },
+  {
+    slug: "tour",
+    name: "Explore With Us",
+    description: "Roads, waterfalls and highland journeys.",
+    href: "/tours",
+    image: koraputImage,
+  },
+  {
+    slug: "rural-stay",
+    name: "Rural Stay",
+    description: "Stay closer to the place and its rhythm.",
+    href: "/rural-stay",
+    image: heroImage,
+  },
 ] as const;
 
 export const koraputStops = ["Talamali", "Deomali", "Duduma", "Gupteswar", "Kolab"] as const;
@@ -72,11 +96,46 @@ export const tour = {
 };
 
 export const faqs = [
-  { group: "Camping", question: "Where can I camp with Rural Camps?", answer: "Ramachandi and Koraput are the current destination hubs. The exact experience depends on date, conditions and confirmation." },
-  { group: "Rent A Camp", question: "Can you set up a camp anywhere?", answer: "Every requested location is checked for access, suitability and feasibility before a setup is confirmed." },
-  { group: "Tours", question: "Is the Koraput itinerary fixed?", answer: "The 2-day journey provides the route structure. Final stops and timing are confirmed directly for your travel date." },
-  { group: "Rural Stay", question: "Is Rural Stay available now?", answer: "Rural Stay enquiries are welcome, but the exact accommodation and operating status must be confirmed before travel." },
-  { group: "Payments", question: "How much does an experience cost?", answer: "Current pricing is shared after your destination, date, group size and requirements are confirmed." },
-  { group: "Weather", question: "What happens if weather changes?", answer: "Outdoor plans depend on conditions. Contact Rural Camps for the current weather and rescheduling guidance before travelling." },
-  { group: "Policies", question: "Where can I find the current policies?", answer: "Cancellation, ID, check-in and site-specific policies are shared during confirmation. They are not yet published on this website." },
+  {
+    group: "Camping",
+    question: "Where can I camp with Rural Camps?",
+    answer:
+      "Ramachandi and Koraput are the current destination hubs. The exact experience depends on date, conditions and confirmation.",
+  },
+  {
+    group: "Rent A Camp",
+    question: "Can you set up a camp anywhere?",
+    answer:
+      "Every requested location is checked for access, suitability and feasibility before a setup is confirmed.",
+  },
+  {
+    group: "Tours",
+    question: "Is the Koraput itinerary fixed?",
+    answer:
+      "The 2-day journey provides the route structure. Final stops and timing are confirmed directly for your travel date.",
+  },
+  {
+    group: "Rural Stay",
+    question: "Is Rural Stay available now?",
+    answer:
+      "Rural Stay enquiries are welcome, but the exact accommodation and operating status must be confirmed before travel.",
+  },
+  {
+    group: "Payments",
+    question: "How much does an experience cost?",
+    answer:
+      "Current pricing is shared after your destination, date, group size and requirements are confirmed.",
+  },
+  {
+    group: "Weather",
+    question: "What happens if weather changes?",
+    answer:
+      "Outdoor plans depend on conditions. Contact Rural Camps for the current weather and rescheduling guidance before travelling.",
+  },
+  {
+    group: "Policies",
+    question: "Where can I find the current policies?",
+    answer:
+      "Cancellation, ID, check-in and site-specific policies are shared during confirmation. They are not yet published on this website.",
+  },
 ] as const;

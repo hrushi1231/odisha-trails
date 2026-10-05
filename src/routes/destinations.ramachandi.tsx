@@ -1,4 +1,90 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHero } from "@/components/site/PageHero"; import { IntroBand, MediaGrid, NumberedList } from "@/components/site/ContentPage"; import { EditorialCTA } from "@/components/site/EditorialCTA"; import { media } from "@/data/site";
-export const Route=createFileRoute("/destinations/ramachandi")({head:()=>({meta:[{title:"Ramachandi Camping | Rural Camps Odisha"},{name:"description",content:"Discover coastal camping near the Puri–Konark Marine Drive at the Ramachandi destination hub."},{property:"og:title",content:"Ramachandi Camping | Rural Camps Odisha"},{property:"og:description",content:"A coastal outdoor night on the Puri–Konark side."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}],links:[{rel:"canonical",href:"/destinations/ramachandi"}]}),component:Page});
-function Page(){return <main><PageHero eyebrow="RAMACHANDI · ODISHA" title={<>WHERE THE<br/><em>NIGHT MEETS SEA.</em></>} copy="Coastal camping and outdoor nights on the Puri–Konark Marine Drive side." image={media.ramachandi}/><IntroBand eyebrow="WHY RAMACHANDI" title={<>A slower evening.<br/><em>A different morning.</em></>} copy="Arrive with your people. Watch the light move across the water. Let an ordinary weekend become a night you remember."/><NumberedList eyebrow="YOUR NIGHT" title="FROM ARRIVAL TO MORNING" items={[{title:"Arrive",copy:"Reach the confirmed meeting point and settle into the landscape."},{title:"Settle in",copy:"Your exact setup and current inclusions are confirmed before travel."},{title:"Sunset",copy:"Slow down as the coast changes colour."},{title:"Night",copy:"Stay outdoors, with site details shared for your date."},{title:"Morning",copy:"Wake beside the Odisha coast."}]}/><MediaGrid images={[media.ramachandi,media.hero,media.ramachandi]} labels={["Coastal camp · temporary visual","Night gathering · temporary visual","Morning by the water · temporary visual"]}/><section className="info-note"><p className="eyebrow">KNOW BEFORE YOU GO</p><h2>CURRENT DETAILS,<br/><em>SHARED DIRECTLY.</em></h2><p>Check-in, access, parking, washrooms, weather guidance and site policies are confirmed with you before the trip. We do not publish unverified operational details.</p></section><EditorialCTA title="BOOK YOUR RAMACHANDI NIGHT."/></main>}
+import { PageHero } from "@/components/site/PageHero";
+import { IntroBand, MediaGrid, NumberedList } from "@/components/site/ContentPage";
+import { EditorialCTA } from "@/components/site/EditorialCTA";
+import { media } from "@/data/site";
+export const Route = createFileRoute("/destinations/ramachandi")({
+  head: () => ({
+    meta: [
+      { title: "Ramachandi Camping | Rural Camps Odisha" },
+      {
+        name: "description",
+        content:
+          "Discover coastal camping near the Puri–Konark Marine Drive at the Ramachandi destination hub.",
+      },
+      { property: "og:title", content: "Ramachandi Camping | Rural Camps Odisha" },
+      { property: "og:description", content: "A coastal outdoor night on the Puri–Konark side." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+    links: [{ rel: "canonical", href: "/destinations/ramachandi" }],
+  }),
+  component: Page,
+});
+function Page() {
+  return (
+    <main>
+      <PageHero
+        eyebrow="RAMACHANDI · ODISHA"
+        title={
+          <>
+            WHERE THE
+            <br />
+            <em>NIGHT MEETS SEA.</em>
+          </>
+        }
+        copy="Coastal camping and outdoor nights on the Puri–Konark Marine Drive side."
+        image={media.ramachandi}
+      />
+      <IntroBand
+        eyebrow="WHY RAMACHANDI"
+        title={
+          <>
+            A slower evening.
+            <br />
+            <em>A different morning.</em>
+          </>
+        }
+        copy="Arrive with your people. Watch the light move across the water. Let an ordinary weekend become a night you remember."
+      />
+      <NumberedList
+        eyebrow="YOUR NIGHT"
+        title="FROM ARRIVAL TO MORNING"
+        items={[
+          {
+            title: "Arrive",
+            copy: "Reach the confirmed meeting point and settle into the landscape.",
+          },
+          {
+            title: "Settle in",
+            copy: "Your exact setup and current inclusions are confirmed before travel.",
+          },
+          { title: "Sunset", copy: "Slow down as the coast changes colour." },
+          { title: "Night", copy: "Stay outdoors, with site details shared for your date." },
+          { title: "Morning", copy: "Wake beside the Odisha coast." },
+        ]}
+      />
+      <MediaGrid
+        images={[media.ramachandi, media.hero, media.ramachandi]}
+        labels={[
+          "Coastal camp · temporary visual",
+          "Night gathering · temporary visual",
+          "Morning by the water · temporary visual",
+        ]}
+      />
+      <section className="info-note">
+        <p className="eyebrow">KNOW BEFORE YOU GO</p>
+        <h2>
+          CURRENT DETAILS,
+          <br />
+          <em>SHARED DIRECTLY.</em>
+        </h2>
+        <p>
+          Check-in, access, parking, washrooms, weather guidance and site policies are confirmed
+          with you before the trip. We do not publish unverified operational details.
+        </p>
+      </section>
+      <EditorialCTA title="BOOK YOUR RAMACHANDI NIGHT." />
+    </main>
+  );
+}
